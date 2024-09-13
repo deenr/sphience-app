@@ -1,0 +1,38 @@
+@use '../colors';
+@use '../typography';
+
+@mixin card {
+  .mat-mdc-card {
+    box-shadow: none !important;
+
+    .mat-mdc-card-header {
+      padding: 0px;
+
+      .mat-mdc-card-title {
+        font-family: typography.$font-family !important;
+        font-size: typography.$fs-300;
+        font-weight: typography.$fw-600;
+        line-height: 150%;
+        color: colors.$color-grey-900;
+      }
+
+      .mat-mdc-card-subtitle {
+        margin-top: 4px;
+        font-family: typography.$font-family !important;
+        font-size: typography.$fs-50;
+        font-weight: typography.$fw-400;
+        line-height: 143%;
+        color: colors.$color-grey-900;
+      }
+    }
+
+    .mat-mdc-card-content,
+    .mat-mdc-card-actions {
+      padding: 0px !important;
+    }
+
+    .mat-mdc-card-actions {
+      flex-direction: unset !important;
+    }
+  }
+}

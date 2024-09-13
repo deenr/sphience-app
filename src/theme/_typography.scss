@@ -1,0 +1,165 @@
+@use 'colors';
+
+$font-family: 'Inter', sans-serif;
+
+$fs-900: 4.5rem;
+$fs-800: 3.75rem;
+$fs-700: 3rem;
+$fs-600: 2.25rem;
+$fs-500: 1.875rem;
+$fs-400: 1.5rem;
+$fs-300: 1.25rem;
+$fs-200: 1.125rem;
+$fs-100: 1rem;
+$fs-50: 0.875rem;
+$fs-25: 0.75rem;
+
+$fw-800: 700;
+$fw-700: 700;
+$fw-600: 600;
+$fw-500: 500;
+$fw-400: 400;
+
+html,
+body {
+  font-family: $font-family !important;
+}
+
+a {
+  color: colors.$color-primary-700;
+  font-size: $fs-50;
+  font-weight: $fw-600;
+  line-height: 143%;
+  text-decoration: none;
+
+  &:hover {
+    color: colors.$color-primary-800;
+  }
+
+  &:active {
+    color: colors.$color-primary-700;
+  }
+
+  &:disabled {
+    color: colors.$color-grey-300;
+  }
+
+  &.grey {
+    color: colors.$color-grey-600;
+
+    &:hover {
+      color: colors.$color-grey-700;
+    }
+
+    &:active {
+      color: colors.$color-grey-600;
+    }
+  }
+}
+
+.text-link {
+  text-decoration-color: colors.$color-primary-500;
+  cursor: pointer;
+}
+
+.caption {
+  font-size: $fs-100;
+  font-weight: $fw-800;
+  line-height: 2rem;
+}
+
+.overline {
+  font-size: $fs-200;
+  font-weight: $fw-400;
+  line-height: 2rem;
+}
+
+.text-regular {
+  font-weight: $fw-400;
+}
+
+.text-medium {
+  font-weight: $fw-500;
+}
+
+.text-semibold {
+  font-weight: $fw-600;
+}
+
+.text-bold {
+  font-weight: $fw-700;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.display-2xl {
+  font-size: $fs-900;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: colors.$color-grey-900;
+}
+
+.display-xl {
+  font-size: $fs-800;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: colors.$color-grey-900;
+}
+
+.display-lg {
+  font-size: $fs-700;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: colors.$color-grey-900;
+}
+
+.display-md {
+  font-size: $fs-600;
+  line-height: 122%;
+  letter-spacing: -0.02em;
+  color: colors.$color-grey-900;
+}
+
+.display-sm {
+  font-size: $fs-500;
+  line-height: 127%;
+  color: colors.$color-grey-900;
+}
+
+.display-xs {
+  font-size: $fs-400;
+  line-height: 133%;
+  color: colors.$color-grey-900;
+}
+
+.text-xl {
+  font-size: $fs-300;
+  line-height: 150%;
+  color: colors.$color-grey-900;
+}
+
+.text-lg {
+  font-size: $fs-200;
+  line-height: 156%;
+  color: colors.$color-grey-900;
+}
+
+.text-md {
+  font-size: $fs-100;
+  line-height: 150%;
+  color: colors.$color-grey-900;
+}
+
+.text-sm {
+  font-size: $fs-50;
+  line-height: 143%;
+  color: colors.$color-grey-900;
+}
+
+.text-xs {
+  font-size: $fs-25;
+  line-height: 150%;
+  color: colors.$color-grey-900;
+}

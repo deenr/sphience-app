@@ -1,0 +1,56 @@
+@use 'sphience';
+
+:host {
+  .steps {
+    gap: 16px;
+
+    .step__base {
+      position: relative;
+      width: 240px;
+      align-items: center;
+      gap: 12px;
+
+      @include sphience.breakpoint-lg() {
+        width: 90px;
+      }
+
+      @include sphience.breakpoint-sm() {
+        display: none;
+      }
+
+      .base__content {
+        align-items: center;
+
+        @include sphience.breakpoint-lg() {
+          display: none;
+        }
+
+        &.incomplete {
+          opacity: 0.6;
+        }
+
+        h5 {
+          color: sphience.$color-grey-700;
+        }
+
+        p {
+          color: sphience.$color-grey-600;
+        }
+      }
+    }
+
+    .line {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      z-index: -1;
+      width: 100%;
+      height: 2px;
+      background-color: sphience.$color-grey-200;
+
+      &.complete {
+        background-color: sphience.$color-grey-700;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="steps flex-row">
+  @for (step of steps; track $index) {
+    <div class="step__base flex-column">
+      <mat-icon [svgIcon]="step.svgIcon" class="featured-md"></mat-icon>
+      <div class="base__content flex-column" [class.incomplete]="!step.complete && !step.current">
+        <p class="text-sm text-semibold">{{ step.text }}</p>
+        <p class="text-sm text-regular">{{ step.supportingText }}</p>
+      </div>
+      @if ($index !== steps.length - 1) {
+        <div class="line" [class.complete]="step.complete"></div>
+      }
+    </div>
+  }
+</div>
