@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HasErrorDirective } from './has-error.directive';
-import { fireEvent, render, screen } from '@testing-library/angular';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { fireEvent, render, screen } from '@testing-library/angular';
+import { HasErrorDirective } from './has-error.directive';
 
 @Component({
   template: `
