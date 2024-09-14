@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ButtonInProgressDirective } from './button-in-progress.directive';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { render, screen } from '@testing-library/angular';
+import { ButtonInProgressDirective } from './button-in-progress.directive';
 
 @Component({
   template: '<button mat-flat-button [inProgress]="inProgress">Button</button>'
