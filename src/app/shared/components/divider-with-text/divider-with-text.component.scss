@@ -1,0 +1,19 @@
+@use 'sphience';
+
+:host {
+  .divider {
+    align-items: center;
+    gap: 8px;
+
+    &__text {
+      color: sphience.$color-grey-600;
+    }
+
+    &__left,
+    &__right {
+      height: 1px;
+      background-color: sphience.$color-grey-200;
+      width: 100%;
+    }
+  }
+}
