@@ -264,8 +264,9 @@
         padding: 0;
 
         .mat-mdc-form-field-error {
+          text-align: end;
           margin-top: -1px;
-          font-size: typography.$fs-50;
+          font-size: typography.$fs-25;
           color: colors.$color-error-500;
         }
       }
@@ -275,7 +276,7 @@
 
         .mat-mdc-form-field-hint {
           margin-top: -1px;
-          font-size: typography.$fs-50;
+          font-size: typography.$fs-25;
           color: colors.$color-grey-600;
         }
       }

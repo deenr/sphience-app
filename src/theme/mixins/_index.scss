@@ -3,9 +3,11 @@
 @use './mixins/card';
 @use './mixins/checkbox';
 @use './mixins/radio';
+@use './mixins/toast';
 
 @include button.button();
 @include forms.forms();
 @include card.card();
 @include checkbox.checkbox();
 @include radio.radio();
+@include toast.toast();

@@ -1,0 +1,41 @@
+{
+  "GENERAL": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password"
+  },
+  "LOGIN": {
+    "TITLE": "Log in",
+    "DESCRIPTION": "Welcome back! Please enter your details.",
+    "QUOTE": {
+      "TEXT": "By connecting students and researchers with the equipment they need, it kickstarts their projects and empowers them to achieve incredible breakthroughs.",
+      "AUTHOR": "Dean Reymen",
+      "ROLE": "Founder Sphience"
+    },
+    "INCORRECT_EMAIL_OR_PASSWORD": "Incorrect email or password",
+    "REMEMBER_PASSWORD": "Remember for 30 days",
+    "FORGOT_PASSWORD": "Forgot password",
+    "NO_ACCOUNT": "Don't have an account?",
+    "SIGN_IN": "Sign in",
+    "SIGN_IN_WITH_GOOGLE": "Sign in with Google"
+  },
+  "REGISTER": {
+    "TITLE": "Sign up",
+    "CREATE_ACCOUNT": {
+      "TITLE": "Create an account",
+      "DESCRIPTION": "Sign up in less than 2 minutes.",
+      "PROGRESS_TITLE": "Your email",
+      "PROGRESS_DESCRIPTION": "Enter your email"
+    },
+    "CHOOSE_PASSWORD": {
+      "TITLE": "Choose a password",
+      "DESCRIPTION": "Must be at least 8 characters.",
+      "PROGRESS_DESCRIPTION": "Choose a secure password"
+    },
+    "ENTER_DETAILS": {
+      "TITLE": "Enter your details",
+      "DESCRIPTION": "This way we can identify you.",
+      "PROGRESS_TITLE": "Your details",
+      "PROGRESS_DESCRIPTION": "Enter your details"
+    }
+  }
+}

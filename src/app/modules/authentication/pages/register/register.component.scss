@@ -1,0 +1,123 @@
+@use 'sphience';
+
+:host {
+  $padding-form-horizontal: 140px;
+  $padding-form-top: 128px;
+
+  .register-section {
+    position: relative;
+    padding: 48px 16px;
+    align-items: center;
+    overflow-x: hidden;
+
+    @include sphience.breakpoint-sm() {
+      padding: $padding-form-top 0 0 0;
+    }
+
+    &::before {
+      width: 768px;
+      height: 768px;
+      position: absolute;
+      z-index: -1;
+      top: 64px;
+      left: 32px;
+      transform: translate(-50%, -50%);
+      mask-image: url('../../../../../assets/illustration/circle-desktop.svg');
+      background: radial-gradient(50% 50% at 50% 50%, sphience.$color-grey-200 0%, transparent 100%);
+      content: '';
+
+      @include sphience.breakpoint-xs() {
+        left: calc(50% - 164px);
+      }
+
+      @include sphience.breakpoint-sm() {
+        top: 144px;
+      }
+    }
+
+    > div {
+      max-width: 360px;
+    }
+
+    &.email-verification {
+      > div {
+        max-width: 100%;
+        align-items: center;
+
+        > div {
+          align-items: center;
+        }
+      }
+
+      &::before {
+        left: calc(50% - 48px);
+      }
+    }
+  }
+
+  .register__logo {
+    position: relative;
+    gap: 8px;
+    align-items: center;
+
+    mat-icon {
+      min-width: 32px;
+      min-height: 32px;
+    }
+  }
+
+  .register__header {
+    margin-top: 80px;
+    align-items: start;
+    gap: 12px;
+
+    h2 {
+      color: sphience.$color-grey-900;
+    }
+
+    p {
+      color: sphience.$color-grey-600;
+    }
+  }
+
+  .register__form {
+    margin-top: 32px;
+    max-width: 360px;
+    width: 100%;
+    position: relative;
+
+    @include sphience.breakpoint-xs() {
+      width: 100%;
+    }
+
+    .form__step-one {
+      gap: 24px;
+
+      .form__email {
+        gap: 16px;
+      }
+
+      .has-account {
+        margin-top: 12px;
+        text-align: center;
+      }
+    }
+
+    .form__step-two,
+    .form__step-three {
+      gap: 24px;
+
+      div {
+        gap: 16px;
+      }
+    }
+  }
+
+  .register__process {
+    margin-bottom: 0;
+
+    @include sphience.breakpoint-sm() {
+      margin-bottom: 64px;
+    }
+  }
+}

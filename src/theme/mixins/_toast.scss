@@ -1,0 +1,164 @@
+@use '../colors';
+@use '../typography';
+@use '../variables';
+@use '../utils';
+
+@mixin toast {
+  .toast-center-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .toast-top-center {
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .toast-bottom-center {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .toast-top-full-width {
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .toast-bottom-full-width {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .toast-top-left {
+    top: 12px;
+    left: 12px;
+  }
+
+  .toast-top-right {
+    top: 12px;
+    right: 12px;
+  }
+
+  .toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .toast-bottom-left {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .toast-title {
+    gap: variables.$spacing-xs;
+    font-size: typography.$fs-50;
+    color: colors.$color-grey-900;
+    font-weight: typography.$fw-600;
+  }
+
+  .toast-message {
+    gap: variables.$spacing-xs;
+    font-size: typography.$fs-50;
+    color: colors.$color-grey-700;
+    font-weight: typography.$fw-400;
+  }
+
+  .toast-message a,
+  .toast-message label {
+    color: colors.$color-grey-700;
+  }
+
+  .toast-message a:hover {
+    color: colors.$color-grey-700;
+    text-decoration: none;
+  }
+
+  .toast-close-button {
+    position: relative;
+    right: -0.3em;
+    top: -0.3em;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: colors.$color-grey-700;
+    text-shadow: 0 1px 0 #ffffff;
+    /* opacity: 0.8; */
+  }
+  .toast-close-button:hover,
+  .toast-close-button:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.4;
+  }
+
+  button.toast-close-button {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+  }
+
+  .toast-container {
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999;
+  }
+
+  .toast-container * {
+    box-sizing: border-box;
+  }
+
+  .toast-container .ngx-toastr {
+    max-width: 500px;
+    position: relative;
+    margin: 0 0 6px;
+    padding: variables.$spacing-xl;
+    padding-left: 64px;
+    background-position: 7px 7px !important;
+    background-repeat: no-repeat;
+    background-size: 38px !important;
+    background-color: colors.$color-white;
+    border-radius: variables.$radius-xl !important;
+    border: 1px solid colors.$color-grey-200 !important;
+    @include utils.shadow-xl-important();
+  }
+  .toast-info {
+    background-image: url('../../assets/icons/toast-info.svg') !important;
+  }
+  .toast-error {
+    background-image: url('../../assets/icons/toast-error.svg') !important;
+  }
+  .toast-success {
+    background-image: url('../../assets/icons/toast-success.svg') !important;
+  }
+  .toast-warning {
+    background-image: url('../../assets/icons/toast-warning.svg') !important;
+  }
+
+  .toast-container.toast-top-center .ngx-toastr,
+  .toast-container.toast-bottom-center .ngx-toastr {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .toast-container.toast-top-full-width .ngx-toastr,
+  .toast-container.toast-bottom-full-width .ngx-toastr {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000000;
+    opacity: 0.4;
+  }
+}

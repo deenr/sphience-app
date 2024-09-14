@@ -2,6 +2,8 @@
 @use 'theme/sphience' as sphience;
 @include mat.core();
 
+@import 'ngx-toastr/toastr';
+
 *,
 *::before,
 *::after {

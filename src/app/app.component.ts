@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SVG_ICONS as svgIcons } from './svg-icons.generated';
+import { RouterOutlet } from '@angular/router';
 import { CoreModule } from '@core/core.module';
+import { SVG_ICONS as svgIcons } from './svg-icons.generated';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { CoreModule } from '@core/core.module';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline', floatLabel: 'always' }
+      useValue: { appearance: 'outline', floatLabel: 'always', subscriptSizing: 'dynamic' }
     }
   ],
   templateUrl: './app.component.html',

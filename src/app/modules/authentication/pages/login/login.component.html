@@ -1,44 +1,46 @@
 <main class="login-page full-width full-height flex-row">
   <section class="login-section flex-column full-height">
-    <form class="login flex-column full-height">
+    <form class="login flex-column full-height" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
       <div class="login__logo flex-row cursor-pointer" routerLink="/">
         <mat-icon svgIcon="logo-color"></mat-icon>
         <h3>Sphience</h3>
       </div>
       <div class="login__header flex-column">
-        <h2 class="display-md text-semibold" classMd="display-xs">Log in</h2>
-        <p class="text-md text-regular">Welcome back! Please enter your details.</p>
+        <h2 class="display-md text-semibold" classMd="display-xs">{{ 'LOGIN.TITLE' | translate }}</h2>
+        <p class="text-md text-regular">{{ 'LOGIN.DESCRIPTION' | translate }}</p>
       </div>
       <div class="login__form flex-column">
         <mat-form-field>
-          <mat-label class="text-sm text-medium">Email</mat-label>
+          <mat-label class="text-sm text-medium">{{ 'GENERAL.EMAIL' | translate }}</mat-label>
           <input matInput formControlName="email" placeholder="Enter your email" />
-          <mat-error *hasError="'email'; code: 'invalid'">Incorrect email or password</mat-error>
+          <mat-error *hasError="'password'; code: 'invalid'">{{ 'LOGIN.INCORRECT_EMAIL_OR_PASSWORD' | translate }}</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label class="text-sm text-medium">Password</mat-label>
-          <input matInput formControlName="password" type="password" placeholder="••••••••" />
+          <mat-label class="text-sm text-medium">{{ 'GENERAL.PASSWORD' | translate }}</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="••••••••" autocomplete="on" />
         </mat-form-field>
       </div>
       <div class="login__remember flex-row">
-        <mat-checkbox class="small" formControlName="remember"> Remember for 30 days </mat-checkbox>
-        <a href="/">Forgot password</a>
+        <mat-checkbox class="small" formControlName="remember">{{ 'LOGIN.REMEMBER_PASSWORD' | translate }}</mat-checkbox>
+        <a href="/">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
       </div>
       <div class="login__actions flex-column">
-        <button mat-flat-button type="button" color="primary">Sign in</button>
-        <button mat-stroked-button type="button"><mat-icon svgIcon="google-color" class="google-icon"></mat-icon> Sign in with Google</button>
+        <button mat-flat-button type="submit" color="primary" [inProgress]="$loadingLogin()">{{ 'LOGIN.SIGN_IN' | translate }}</button>
+        <button mat-stroked-button type="button" [inProgress]="false"><mat-icon svgIcon="google-color" class="google-icon"></mat-icon>{{ 'LOGIN.SIGN_IN_WITH_GOOGLE' | translate }}</button>
       </div>
       <div class="login__no-account">
-        <span class="text-sm text-regular">Don't have an account? <a routerLink="/register">Sign up</a></span>
+        <span class="text-sm text-regular">
+          {{ 'LOGIN.NO_ACCOUNT' | translate }} <a routerLink="/register">{{ 'REGISTER.TITLE' | translate }}</a>
+        </span>
       </div>
     </form>
   </section>
   <aside class="attribution full-height">
     <div class="quote">
-      <h4 class="display-sm text-medium">By connecting students and researchers with the equipment they need, it kickstarts their projects and empowers them to achieve incredible breakthroughs.</h4>
+      <h4 class="display-sm text-medium">{{ 'LOGIN.QUOTE.TEXT' | translate }}</h4>
       <div class="quote__author">
-        <p class="text-lg text-semibold">— Dean Reymen</p>
-        <p class="text-md text-medium">Founder Sphience</p>
+        <p class="text-lg text-semibold">— {{ 'LOGIN.QUOTE.AUTHOR' | translate }}</p>
+        <p class="text-md text-medium">{{ 'LOGIN.QUOTE.ROLE' | translate }}</p>
       </div>
     </div>
     <img src="../../../../../assets/image/login-mockup.webp" alt="Mockup of the application" class="attribution__image" />
