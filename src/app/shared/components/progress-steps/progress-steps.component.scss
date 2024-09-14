@@ -6,27 +6,30 @@
 
     .step__base {
       position: relative;
-      width: 240px;
+      width: 90px;
       align-items: center;
       gap: 12px;
-
-      @include sphience.breakpoint-lg() {
-        width: 90px;
-      }
+      display: none;
 
       @include sphience.breakpoint-sm() {
-        display: none;
+        display: flex;
+      }
+
+      @include sphience.breakpoint-lg() {
+        width: 240px;
       }
 
       .base__content {
+        display: none;
         align-items: center;
+        opacity: 0.6;
 
         @include sphience.breakpoint-lg() {
-          display: none;
+          display: flex;
         }
 
-        &.incomplete {
-          opacity: 0.6;
+        &.current {
+          opacity: 1;
         }
 
         h5 {

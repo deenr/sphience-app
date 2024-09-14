@@ -3,6 +3,6 @@ export interface ProgressStep {
   svgIcon: string;
   complete: boolean;
   current: boolean;
-  text: string;
-  supportingText: string;
+  title: string;
+  description: string;
 }
