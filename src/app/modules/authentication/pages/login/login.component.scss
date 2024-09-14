@@ -11,21 +11,21 @@
 
   .login-section {
     position: relative;
-    width: 40%;
+    width: 100%;
     align-items: center;
-    padding-top: $padding-form-top;
     overflow-x: hidden;
+    padding: 48px 16px;
 
-    @include sphience.breakpoint-xl() {
-      width: 60%;
+    @include sphience.breakpoint-sm() {
+      padding: $padding-form-top 0 0 0;
     }
 
     @include sphience.breakpoint-lg() {
-      width: 100%;
+      width: 60%;
     }
 
-    @include sphience.breakpoint-sm() {
-      padding: 48px 16px;
+    @include sphience.breakpoint-xl() {
+      width: 40%;
     }
 
     &::before {
@@ -33,29 +33,29 @@
       height: 768px;
       position: absolute;
       z-index: -1;
-      top: 144px;
-      left: calc(50% - 164px);
+      top: 64px;
+      left: 32px;
       transform: translate(-50%, -50%);
       mask-image: url('../../../../../assets/illustration/circle-desktop.svg');
       background: radial-gradient(50% 50% at 50% 50%, sphience.$color-grey-200 0%, transparent 100%);
       content: '';
 
-      @include sphience.breakpoint-sm() {
-        top: 64px;
+      @include sphience.breakpoint-xs() {
+        left: calc(50% - 164px);
       }
 
-      @include sphience.breakpoint-xs() {
-        left: 32px;
+      @include sphience.breakpoint-sm() {
+        top: 144px;
       }
     }
   }
 
   .login {
     position: relative;
-    width: 360px;
+    width: 100%;
 
     @include sphience.breakpoint-xs() {
-      width: 100%;
+      width: 360px;
     }
 
     &__logo {
@@ -113,25 +113,28 @@
   }
 
   .attribution {
-    width: 60%;
     position: relative;
     background-color: sphience.$color-grey-100;
     padding: 96px 64px;
     overflow: hidden;
-
-    @include sphience.breakpoint-xl() {
-      width: 40%;
-      display: flex;
-      align-items: center;
-    }
+    display: none;
 
     @include sphience.breakpoint-lg() {
-      display: none;
+      display: flex;
+      align-items: center;
+      width: 40%;
+    }
+
+    @include sphience.breakpoint-xl() {
+      width: 60%;
+      align-items: unset;
     }
 
     .quote {
+      display: none;
+
       @include sphience.breakpoint-xl() {
-        display: none;
+        display: block;
       }
 
       &__author {
@@ -141,14 +144,15 @@
 
     &__image {
       position: absolute;
-      margin-top: 112px;
-      transform-origin: top left;
-      scale: 1.5;
+      transform-origin: center left;
+      scale: 2;
+      margin-top: 0;
+      border-radius: 16px;
 
       @include sphience.breakpoint-xl() {
-        transform-origin: center left;
-        scale: 2;
-        margin-top: 0;
+        margin-top: 40%;
+        transform-origin: top left;
+        scale: 1.5;
       }
     }
   }
