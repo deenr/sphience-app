@@ -1,0 +1,12 @@
+@use 'sphience';
+
+:host {
+  .main {
+    background-color: sphience.$color-grey-25;
+  }
+
+  .sidebar {
+    width: 312px;
+    background-color: sphience.$color-white;
+  }
+}

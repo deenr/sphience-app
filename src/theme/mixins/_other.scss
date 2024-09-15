@@ -1,0 +1,7 @@
+@use '../colors';
+
+@mixin other {
+  .mat-divider {
+    border-top-color: colors.$color-grey-200 !important;
+  }
+}

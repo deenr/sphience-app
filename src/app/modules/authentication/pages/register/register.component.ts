@@ -186,7 +186,9 @@ export class RegisterComponent {
         .subscribe({
           next: () => {
             this.toastService.success('Your profile was successfully created', 'Succesfully created profile');
-            this.router.navigate(['/']);
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/']);
+            });
           },
           error: () => {
             this.toastService.error('Please try creating your profile one more time', 'Unable to create profile');

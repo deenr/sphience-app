@@ -1,0 +1,8 @@
+<div class="sidenav-profile flex-row">
+  <mat-icon class="sidenav-profile__avatar" svgIcon="user"></mat-icon>
+  <div class="sidenav-profile__info flex-column">
+    <h5 class="text-sm text-semibold">{{ name() }}</h5>
+    <p class="text-sm text-regular">{{ email() }}</p>
+  </div>
+  <mat-icon class="sidenav-profile__signout cursor-pointer" svgIcon="sign-out" (click)="logout.emit()"></mat-icon>
+</div>

@@ -1,0 +1,39 @@
+@use 'sphience';
+
+:host {
+  .sidenav-item {
+    padding: 8px;
+    gap: 12px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: sphience.$color-grey-50;
+    }
+
+    mat-icon {
+      width: 24px;
+      height: 24px;
+      color: sphience.$color-grey-500;
+    }
+
+    p {
+      color: sphience.$color-grey-700;
+    }
+
+    &.active {
+      background-color: sphience.$color-primary-50;
+
+      mat-icon {
+        color: sphience.$color-primary-700;
+      }
+
+      p {
+        color: sphience.$color-primary-700;
+      }
+
+      &:hover {
+        background-color: sphience.$color-primary-100;
+      }
+    }
+  }
+}

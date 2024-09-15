@@ -94,6 +94,9 @@ export class ButtonInProgressDirective implements OnInit, AfterViewInit {
     });
     buttonLabelElement.style.setProperty('display', 'inline-flex');
 
-    this.renderer.removeChild(this.elementRef.nativeElement, this.createSpinner());
+    const spinnerElement = (this.elementRef.nativeElement as HTMLButtonElement).getElementsByClassName('mat-mdc-progress-spinner')[0];
+    if (spinnerElement) {
+      this.renderer.removeChild(this.elementRef.nativeElement, spinnerElement);
+    }
   }
 }

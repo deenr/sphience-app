@@ -2,16 +2,15 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
-import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AuthService } from './auth/auth.service';
+import { SidenavModule } from './sidenav/sidenav.module';
 
 @NgModule({
   exports: [],
-  imports: [CommonModule, ToastrModule],
+  imports: [CommonModule, ToastrModule, SidenavModule],
   providers: [
     AuthService,
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

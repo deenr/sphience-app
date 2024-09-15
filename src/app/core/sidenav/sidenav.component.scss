@@ -1,0 +1,33 @@
+@use 'sphience';
+
+:host {
+  .sidenav {
+    width: 310px;
+    padding: 32px 16px;
+    gap: 24px;
+    background-color: sphience.$color-white;
+    border-right: 1px solid sphience.$color-grey-200;
+
+    &__logo {
+      gap: 6px;
+
+      mat-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      p {
+        color: sphience.$color-grey-900;
+      }
+    }
+
+    &__top,
+    &_bottom {
+      gap: 4px;
+    }
+
+    &__bottom {
+      margin-top: auto;
+    }
+  }
+}

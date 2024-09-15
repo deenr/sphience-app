@@ -1,0 +1,35 @@
+@use 'sphience';
+
+:host {
+  .sidenav-profile {
+    position: relative;
+    gap: 12px;
+
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      color: sphience.$color-primary-600;
+      background-color: sphience.$color-primary-50;
+      border-radius: sphience.$radius-full;
+    }
+
+    &__info {
+      h5 {
+        color: sphience.$color-grey-900;
+      }
+
+      p {
+        color: sphience.$color-grey-600;
+      }
+    }
+
+    &__signout {
+      width: 20px;
+      height: 20px;
+      margin-left: auto;
+      margin-right: 8px;
+      color: sphience.$color-grey-500;
+    }
+  }
+}

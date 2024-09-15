@@ -4,6 +4,7 @@
 @use './mixins/checkbox';
 @use './mixins/radio';
 @use './mixins/toast';
+@use './mixins/other';
 
 @include button.button();
 @include forms.forms();
@@ -11,3 +12,4 @@
 @include checkbox.checkbox();
 @include radio.radio();
 @include toast.toast();
+@include other.other();
