@@ -16,15 +16,16 @@ export class AuthService {
     return this._currentSessionToken$.asObservable();
   }
 
-  constructor(private http: HttpClient) {
+  public constructor(private http: HttpClient) {
     this.http
       .get<{ accessToken: string }>(`${environment.apiUrl}/auth/token`, { withCredentials: true })
       .pipe(
-        tap(({ accessToken }) => {
+        map(({ accessToken }) => {
           this._currentSessionToken$.next(accessToken);
+          return accessToken;
         }),
-        catchError(() => {
-          this._currentSessionToken$.next(null);
+        catchError((error) => {
+          this._currentSessionToken$.error(error);
           return [];
         }),
         takeUntilDestroyed()
@@ -53,6 +54,10 @@ export class AuthService {
   }
 
   public logout(): Observable<void> {
-    return this.http.post<void>(`${environment.apiUrl}/auth/signout`, { withCredentials: true }).pipe(tap(() => this._currentSessionToken$.next(null)));
+    return this.http.post<void>(`${environment.apiUrl}/auth/signout`, {}, { withCredentials: true }).pipe(
+      tap(() => {
+        this._currentSessionToken$.next(null);
+      })
+    );
   }
 }

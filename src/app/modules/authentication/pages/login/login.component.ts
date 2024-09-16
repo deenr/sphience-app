@@ -91,8 +91,10 @@ export class LoginComponent {
         .subscribe({
           next: () => {
             this.toastService.success('Welcome back to Sphience.', 'Succesfully logged in');
-            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/']);
+            setTimeout(() => {
+              this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+                this.router.navigate(['/']);
+              });
             });
           },
           error: () => {

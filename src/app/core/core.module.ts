@@ -14,7 +14,8 @@ import { SidenavModule } from './sidenav/sidenav.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
+      deps: [AuthService]
     }
   ]
 })
