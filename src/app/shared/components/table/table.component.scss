@@ -1,4 +1,4 @@
-@use 'mastery';
+@use 'sphience';
 
 :host {
   .table {
@@ -6,8 +6,8 @@
     height: fit-content;
     max-height: 100%;
     z-index: 1;
-    border: 1px solid mastery.$color-grey-200;
-    border-radius: mastery.$radius-md;
+    border: 1px solid sphience.$color-grey-200;
+    border-radius: sphience.$radius-md;
     overflow: auto;
 
     h3 {
@@ -16,10 +16,10 @@
       top: 0;
       left: 0;
       padding: 20px 24px;
-      border-bottom: 1px solid mastery.$color-grey-200;
-      font-size: mastery.$fs-200;
-      color: mastery.$color-grey-900;
-      background-color: mastery.$color-white;
+      border-bottom: 1px solid sphience.$color-grey-200;
+      font-size: sphience.$fs-200;
+      color: sphience.$color-grey-900;
+      background-color: sphience.$color-white;
     }
 
     &:not(:has(h3)) .cdk-table .cdk-header-row {
@@ -38,18 +38,20 @@
         height: 44px;
 
         .cdk-header-cell {
+          @include sphience.text-xs();
+          @include sphience.text-medium();
+
           padding: 12px 24px;
-          border-bottom: 1px solid mastery.$color-grey-200;
-          background-color: mastery.$color-grey-50;
-          color: mastery.$color-grey-500;
+          border-bottom: 1px solid sphience.$color-grey-200;
+          background-color: sphience.$color-grey-50;
+          font-family: sphience.$font-family !important;
+          color: sphience.$color-grey-500;
           text-align: left;
-          font-size: mastery.$fs-50;
-          font-weight: mastery.$fw-500;
         }
 
         .mat-icon {
-          margin-left: mastery.$spacing-xs;
-          color: mastery.$color-grey-400;
+          margin-left: sphience.$spacing-xs;
+          color: sphience.$color-grey-400;
           height: 16px;
           width: 16px;
         }
@@ -63,17 +65,20 @@
 
       .cdk-row {
         position: relative;
+        background-color: sphience.$color-white;
 
         &.clickable:hover {
-          background-color: mastery.$color-grey-50;
+          background-color: sphience.$color-grey-50;
           cursor: pointer;
         }
 
         .cdk-cell {
+          @include sphience.text-sm();
+          @include sphience.text-regular();
+
           padding: 16px 24px;
-          color: mastery.$color-grey-600;
-          font-size: mastery.$fs-50;
-          font-weight: mastery.$font-weight-regular;
+          font-family: sphience.$font-family !important;
+          color: sphience.$color-grey-600;
 
           & > * {
             overflow: hidden;
@@ -81,7 +86,7 @@
         }
 
         &:not(:last-of-type) .cdk-cell {
-          border-bottom: 1px solid mastery.$color-grey-200;
+          border-bottom: 1px solid sphience.$color-grey-200;
         }
 
         .action-icon {
@@ -133,9 +138,9 @@
     z-index: 999;
     bottom: 0;
     margin-top: auto;
-    border-top: 1px solid mastery.$color-grey-200;
+    border-top: 1px solid sphience.$color-grey-200;
     padding: 12px 24px 16px 24px;
-    background-color: mastery.$color-white !important;
+    background-color: sphience.$color-white !important;
 
     .mat-mdc-paginator-outer-container {
       .mat-mdc-paginator-container {
@@ -156,10 +161,10 @@
           .mat-mdc-paginator-range-label {
             margin-left: 0;
             margin-right: auto;
-            font-size: mastery.$fs-50;
+            font-size: sphience.$fs-50;
             line-height: 143%;
-            color: mastery.$color-grey-700;
-            font-weight: mastery.$fw-500;
+            color: sphience.$color-grey-700;
+            font-weight: sphience.$fw-500;
             text-align: center;
           }
 
@@ -197,14 +202,14 @@
               bottom: 0;
               left: 0;
               right: 0;
-              font-size: mastery.$fs-50;
+              font-size: sphience.$fs-50;
               line-height: 143%;
-              color: mastery.$color-grey-700;
-              font-weight: mastery.$fw-600;
+              color: sphience.$color-grey-700;
+              font-weight: sphience.$fw-600;
             }
 
             &:disabled::after {
-              color: mastery.$color-grey-300 !important;
+              color: sphience.$color-grey-300 !important;
             }
 
             .mat-mdc-paginator-icon {

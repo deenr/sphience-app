@@ -26,7 +26,7 @@
           }
           @switch (column.type) {
             @case (tableColumnDataType.TEXT) {
-              {{ row | nestedValue: column | translationKey: column | translate }}
+              {{ row | nestedValue: column }}
             }
             @case (tableColumnDataType.EDIT) {
               <mat-icon data-testid="table-edit-icon" class="action-icon" svgIcon="pencil" (click)="onCellEdit($event, row)"></mat-icon>
@@ -39,8 +39,8 @@
       </ng-container>
     }
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row data-testid="table-row" *matRowDef="let row; columns: displayedColumns" [class.clickable]="isCellClickedObserved()" (click)="onRowClick(row)"> </mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns()"></mat-header-row>
+    <mat-row data-testid="table-row" *matRowDef="let row; columns: displayedColumns()" [class.clickable]="isCellClickedObserved()" (click)="onRowClick(row)"> </mat-row>
     @if (withNoResultsOverlay()) {
       <app-table-overlay *matNoDataRow></app-table-overlay>
     }

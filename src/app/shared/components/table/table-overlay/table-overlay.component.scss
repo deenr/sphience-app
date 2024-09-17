@@ -1,4 +1,4 @@
-@use 'mastery';
+@use 'sphience';
 
 :host {
   .overlay {
@@ -11,9 +11,9 @@
       width: 48px;
       height: 48px;
       padding: 12px;
-      border: 1px solid mastery.$color-grey-200;
-      border-radius: mastery.$radius-lg;
-      color: mastery.$color-grey-700;
+      border: 1px solid sphience.$color-grey-200;
+      border-radius: sphience.$radius-lg;
+      color: sphience.$color-grey-700;
     }
 
     h4,
@@ -22,15 +22,15 @@
     }
 
     h4 {
-      margin-top: mastery.$spacing-2xl;
-      font-size: mastery.$fs-100;
-      color: mastery.$color-grey-900;
+      margin-top: sphience.$spacing-2xl;
+      font-size: sphience.$fs-100;
+      color: sphience.$color-grey-900;
     }
 
     p {
-      margin-top: mastery.$spacing-md;
-      font-size: mastery.$fs-50;
-      color: mastery.$color-grey-600;
+      margin-top: sphience.$spacing-md;
+      font-size: sphience.$fs-50;
+      color: sphience.$color-grey-600;
     }
   }
 }

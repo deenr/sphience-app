@@ -1,35 +1,24 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SharedUtils } from '@shared/utils/shared-utils';
+import { getNestedValue } from '@shared/utils/object.utils';
 import { TableColumn } from '../builder/table-column';
 
 @Pipe({
   name: 'nestedValue'
 })
 export class NestedValuePipe implements PipeTransform {
-  public transform(data: any, column: TableColumn, type: 'value' | 'title' | 'description' = 'value'): string {
-    if (SharedUtils.isNullOrUndefined(data)) {
+  public transform(data: any, column: TableColumn): string {
+    if (!data) {
       return '';
     }
 
-    let valueKey = '';
-    switch (type) {
-      case 'title':
-        valueKey = column?.titleValueKey;
-        break;
-      case 'description':
-        valueKey = column?.descriptionValueKey;
-        break;
-      default:
-        valueKey = column?.valueKey;
-        break;
-    }
+    let valueKey = column?.valueKey;
 
-    if (SharedUtils.isNullOrUndefined(valueKey)) {
+    if (!valueKey) {
       return '';
     }
 
-    return valueKey.match(/%\((.*?)\)/g)?.length > 0
-      ? valueKey.replace(/%\((.*?)\)/g, (_: string, placeholder: string) => SharedUtils.getNestedValue(placeholder, data))
-      : SharedUtils.getNestedValue(valueKey, data);
+    const matches = valueKey.match(/%\((.*?)\)/g);
+
+    return matches && matches.length > 0 ? valueKey.replace(/%\((.*?)\)/g, (_: string, placeholder: string) => getNestedValue(placeholder, data)) : getNestedValue(valueKey, data);
   }
 }

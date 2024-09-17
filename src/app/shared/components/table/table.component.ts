@@ -18,12 +18,12 @@ import { TableColumnDataType } from './table-column-data-type.enum';
 export class TableComponent<T> {
   @ViewChild(MatPaginator, { static: true }) public paginator?: MatPaginator;
 
+  public data = input.required<T[]>();
+  public columns = input.required<TableColumn[]>();
   public withSelection = input(false);
   public withPaginator = input(true);
   public withNoResultsOverlay = input(true);
   public title = input<string>('');
-  public data = input<T[]>([]);
-  public columns = input<TableColumn[]>([]);
 
   @Output() public rowClicked = new EventEmitter<T>();
   @Output() public edit = new EventEmitter<T>();

@@ -10,14 +10,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { NestedValuePipe } from './pipes/nested-value.pipe';
-import { TranslationKeyPipe } from './pipes/translation-key.pipe';
 import { TableOverlayComponent } from './table-overlay/table-overlay.component';
-import { TableTitleAndDescriptionComponent } from './table-title-and-description/table-title-and-description.component';
 import { TableComponent } from './table.component';
 
 @NgModule({
   imports: [CommonModule, MatPaginatorModule, MatTableModule, MatCheckboxModule, MatIconModule, MatChipsModule, MatProgressBarModule, MatTooltipModule, MatMenuModule, TranslateModule],
-  declarations: [TableComponent, TableTitleAndDescriptionComponent, NestedValuePipe, TableOverlayComponent, TranslationKeyPipe],
+  declarations: [TableComponent, NestedValuePipe, TableOverlayComponent],
   exports: [TableComponent]
 })
 export class TableModule {}
