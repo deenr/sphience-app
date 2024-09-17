@@ -1,0 +1,29 @@
+@use 'mastery';
+
+:host {
+  .title-and-description {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    h4,
+    p {
+      margin: 0;
+      text-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h4 {
+      color: mastery.$color-grey-900;
+      font-size: mastery.$fs-50;
+      font-weight: mastery.$font-weight-bold;
+    }
+
+    p {
+      color: mastery.$color-grey-500;
+      font-size: mastery.$fs-50;
+      font-weight: mastery.$font-weight-regular;
+    }
+  }
+}

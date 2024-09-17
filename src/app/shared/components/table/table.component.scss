@@ -1,0 +1,222 @@
+@use 'mastery';
+
+:host {
+  .table {
+    position: relative;
+    height: fit-content;
+    max-height: 100%;
+    z-index: 1;
+    border: 1px solid mastery.$color-grey-200;
+    border-radius: mastery.$radius-md;
+    overflow: auto;
+
+    h3 {
+      position: sticky;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      padding: 20px 24px;
+      border-bottom: 1px solid mastery.$color-grey-200;
+      font-size: mastery.$fs-200;
+      color: mastery.$color-grey-900;
+      background-color: mastery.$color-white;
+    }
+
+    &:not(:has(h3)) .cdk-table .cdk-header-row {
+      top: 0 !important;
+    }
+
+    .cdk-table {
+      position: relative;
+      border-spacing: 0;
+
+      .cdk-header-row {
+        position: sticky;
+        z-index: 999;
+        top: 62px;
+        min-height: unset;
+        height: 44px;
+
+        .cdk-header-cell {
+          padding: 12px 24px;
+          border-bottom: 1px solid mastery.$color-grey-200;
+          background-color: mastery.$color-grey-50;
+          color: mastery.$color-grey-500;
+          text-align: left;
+          font-size: mastery.$fs-50;
+          font-weight: mastery.$fw-500;
+        }
+
+        .mat-icon {
+          margin-left: mastery.$spacing-xs;
+          color: mastery.$color-grey-400;
+          height: 16px;
+          width: 16px;
+        }
+      }
+
+      .mat-mdc-checkbox {
+        margin-top: unset !important;
+        margin-left: -4px;
+        padding: 4px 12px 4px 4px !important;
+      }
+
+      .cdk-row {
+        position: relative;
+
+        &.clickable:hover {
+          background-color: mastery.$color-grey-50;
+          cursor: pointer;
+        }
+
+        .cdk-cell {
+          padding: 16px 24px;
+          color: mastery.$color-grey-600;
+          font-size: mastery.$fs-50;
+          font-weight: mastery.$font-weight-regular;
+
+          & > * {
+            overflow: hidden;
+          }
+        }
+
+        &:not(:last-of-type) .cdk-cell {
+          border-bottom: 1px solid mastery.$color-grey-200;
+        }
+
+        .action-icon {
+          cursor: pointer;
+        }
+      }
+
+      .mat-cell-action {
+        flex: 44px 0 0 !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        padding: 16px 2px !important;
+
+        .mat-icon {
+          width: 20px;
+          height: 20px;
+          margin: 10px;
+        }
+
+        &:not(.mat-cell-action ~ .mat-cell-action).mat-cell-action,
+        &:last-child {
+          flex: 58px 0 0 !important;
+          min-width: 58px !important;
+          max-width: 58px !important;
+        }
+
+        &:not(.mat-cell-action ~ .mat-cell-action).mat-cell-action {
+          padding: 16px 2px 16px 16px !important;
+        }
+
+        &:last-child {
+          padding: 16px 16px 16px 2px !important;
+        }
+
+        &:not(.mat-cell-action ~ .mat-cell-action).mat-cell-action:last-child {
+          flex: 72px 0 0 !important;
+          min-width: 72px !important;
+          max-width: 72px !important;
+          padding: 16px !important;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-paginator {
+    position: sticky;
+    z-index: 999;
+    bottom: 0;
+    margin-top: auto;
+    border-top: 1px solid mastery.$color-grey-200;
+    padding: 12px 24px 16px 24px;
+    background-color: mastery.$color-white !important;
+
+    .mat-mdc-paginator-outer-container {
+      .mat-mdc-paginator-container {
+        position: relative;
+        min-height: unset;
+        padding: 0;
+
+        .mat-mdc-paginator-page-size {
+          display: none;
+        }
+
+        .mat-mdc-paginator-range-actions {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+
+          .mat-mdc-paginator-range-label {
+            margin-left: 0;
+            margin-right: auto;
+            font-size: mastery.$fs-50;
+            line-height: 143%;
+            color: mastery.$color-grey-700;
+            font-weight: mastery.$fw-500;
+            text-align: center;
+          }
+
+          .mat-mdc-paginator-navigation-previous {
+            width: 87px !important;
+
+            &::after {
+              content: 'Previous';
+            }
+          }
+
+          .mat-mdc-paginator-navigation-next {
+            width: 60px !important;
+
+            &::after {
+              content: 'Next';
+            }
+          }
+
+          .mat-mdc-paginator-navigation-previous.mat-unthemed,
+          .mat-mdc-paginator-navigation-next.mat-unthemed {
+            height: 36px !important;
+            padding: 8px 14px !important;
+            display: flex;
+            align-items: center;
+
+            &::after {
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              font-size: mastery.$fs-50;
+              line-height: 143%;
+              color: mastery.$color-grey-700;
+              font-weight: mastery.$fw-600;
+            }
+
+            &:disabled::after {
+              color: mastery.$color-grey-300 !important;
+            }
+
+            .mat-mdc-paginator-icon {
+              display: none;
+            }
+
+            .mat-mdc-button-ripple {
+              border: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

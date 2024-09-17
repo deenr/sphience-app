@@ -1,0 +1,36 @@
+@use 'mastery';
+
+:host {
+  .overlay {
+    position: relative;
+    height: calc(100% - 44px);
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      padding: 12px;
+      border: 1px solid mastery.$color-grey-200;
+      border-radius: mastery.$radius-lg;
+      color: mastery.$color-grey-700;
+    }
+
+    h4,
+    p {
+      margin: 0;
+    }
+
+    h4 {
+      margin-top: mastery.$spacing-2xl;
+      font-size: mastery.$fs-100;
+      color: mastery.$color-grey-900;
+    }
+
+    p {
+      margin-top: mastery.$spacing-md;
+      font-size: mastery.$fs-50;
+      color: mastery.$color-grey-600;
+    }
+  }
+}
