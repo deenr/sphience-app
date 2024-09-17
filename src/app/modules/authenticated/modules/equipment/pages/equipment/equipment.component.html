@@ -1,10 +1,18 @@
 <app-header title="Equipment catalog" description="View the catalog of the university here.">
-  <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>New reservation</button>
-  <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
-  <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
+  <ng-container actions>
+    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>New reservation</button>
+    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
+    <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
+  </ng-container>
+  <ng-container tabs>
+    <app-tabs [tabs]="tabs"></app-tabs>
+  </ng-container>
 </app-header>
-
 <mat-menu #extraOptions="matMenu" class="extra-actions">
   <button mat-menu-item><mat-icon svgIcon="plus"></mat-icon>Add device</button>
   <button mat-menu-item><mat-icon svgIcon="trash"></mat-icon>Remove selected device(s)</button>
 </mat-menu>
+
+<div class="equipment flex-column full-height">
+  <app-table class="full-height" [data]="data" [columns]="columns" title="All devices"></app-table>
+</div>

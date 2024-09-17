@@ -37,5 +37,10 @@
       "PROGRESS_TITLE": "Your details",
       "PROGRESS_DESCRIPTION": "Enter your details"
     }
+  },
+  "COMPONENTS": {
+    "TABLE": {
+      "PAGINATION": "Page {current} of {total}"
+    }
   }
 }
