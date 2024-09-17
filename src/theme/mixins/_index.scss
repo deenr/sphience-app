@@ -5,6 +5,7 @@
 @use './mixins/radio';
 @use './mixins/toast';
 @use './mixins/other';
+@use './mixins/menu';
 
 @include button.button();
 @include forms.forms();
@@ -13,3 +14,4 @@
 @include radio.radio();
 @include toast.toast();
 @include other.other();
+@include menu.menu();

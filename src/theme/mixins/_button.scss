@@ -10,11 +10,17 @@
     font-weight: typography.$fw-600 !important;
     letter-spacing: 0 !important;
 
+    &.icon-only {
+      aspect-ratio: 1;
+      padding: 12px !important;
+    }
+
     &.sm {
       height: 36px !important;
       padding: 8px 14px !important;
 
       &.icon-only {
+        aspect-ratio: 1;
         padding: 8px !important;
       }
     }
@@ -24,6 +30,7 @@
       padding: 10px 16px !important;
 
       &.icon-only {
+        aspect-ratio: 1;
         padding: 10px !important;
       }
     }
@@ -33,6 +40,7 @@
       padding: 10px 18px !important;
 
       &.icon-only {
+        aspect-ratio: 1;
         padding: 12px !important;
       }
     }
@@ -42,6 +50,7 @@
       padding: 12px 20px !important;
 
       &.icon-only {
+        aspect-ratio: 1;
         padding: 14px !important;
       }
     }
@@ -53,6 +62,7 @@
       line-height: 156% !important;
 
       &.icon-only {
+        aspect-ratio: 1;
         padding: 16px !important;
       }
     }

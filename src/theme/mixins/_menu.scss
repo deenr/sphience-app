@@ -1,0 +1,44 @@
+@use 'colors';
+@use 'variables';
+@use 'utils';
+@use 'typography';
+
+@mixin menu {
+  .mat-mdc-menu-panel.extra-actions {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid colors.$color-grey-200;
+    background-color: colors.$color-white;
+    border-radius: variables.$radius-md !important;
+
+    @include utils.shadow-lg();
+
+    .mat-mdc-menu-content {
+      padding: 4px;
+
+      .mat-mdc-menu-item {
+        min-height: 0;
+        padding: 10px 8px;
+        border-radius: 6px;
+        gap: 8px;
+
+        mat-icon {
+          width: 20px;
+          height: 20px;
+          color: colors.$color-grey-500;
+        }
+
+        .mat-mdc-menu-item-text {
+          @include typography.text-md();
+          @include typography.text-medium();
+        }
+      }
+
+      .mat-mdc-menu-item:hover {
+        background-color: colors.$color-grey-50;
+      }
+    }
+  }
+}

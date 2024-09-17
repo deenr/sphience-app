@@ -74,92 +74,155 @@ a {
   line-height: 2rem;
 }
 
-.text-regular {
+@mixin text-regular {
   font-weight: $fw-400;
 }
 
-.text-medium {
+.text-regular {
+  @include text-regular();
+}
+
+@mixin text-medium {
   font-weight: $fw-500;
 }
 
-.text-semibold {
+.text-medium {
+  @include text-medium();
+}
+
+@mixin text-semibold {
   font-weight: $fw-600;
 }
 
-.text-bold {
+.text-semibold {
+  @include text-semibold();
+}
+
+@mixin text-bold {
   font-weight: $fw-700;
 }
 
-.text-italic {
+.text-bold {
+  @include text-bold();
+}
+
+@mixin text-italic {
   font-style: italic;
 }
 
-.display-2xl {
+.text-italic {
+  @include text-italic();
+}
+
+@mixin display-2xl {
   font-size: $fs-900;
   line-height: 125%;
   letter-spacing: -0.02em;
   color: colors.$color-grey-900;
 }
 
-.display-xl {
+.display-2xl {
+  @include display-2xl();
+}
+
+@mixin display-xl {
   font-size: $fs-800;
   line-height: 120%;
   letter-spacing: -0.02em;
   color: colors.$color-grey-900;
 }
 
-.display-lg {
+.display-xl {
+  @include display-xl();
+}
+
+@mixin display-lg {
   font-size: $fs-700;
   line-height: 125%;
   letter-spacing: -0.02em;
   color: colors.$color-grey-900;
 }
 
-.display-md {
+.display-lg {
+  @include display-lg();
+}
+
+@mixin display-md {
   font-size: $fs-600;
   line-height: 122%;
   letter-spacing: -0.02em;
   color: colors.$color-grey-900;
 }
 
-.display-sm {
+.display-md {
+  @include display-md();
+}
+@mixin display-sm {
   font-size: $fs-500;
   line-height: 127%;
   color: colors.$color-grey-900;
 }
 
-.display-xs {
+.display-sm {
+  @include display-sm();
+}
+
+@mixin display-xs {
   font-size: $fs-400;
   line-height: 133%;
   color: colors.$color-grey-900;
 }
 
-.text-xl {
+.display-xs {
+  @include display-xs();
+}
+
+@mixin text-xl {
   font-size: $fs-300;
   line-height: 150%;
   color: colors.$color-grey-900;
 }
 
-.text-lg {
+.text-xl {
+  @include text-xl();
+}
+
+@mixin text-lg {
   font-size: $fs-200;
   line-height: 156%;
   color: colors.$color-grey-900;
 }
 
-.text-md {
+.text-lg {
+  @include text-lg();
+}
+
+@mixin text-md {
   font-size: $fs-100;
   line-height: 150%;
   color: colors.$color-grey-900;
 }
 
-.text-sm {
+.text-md {
+  @include text-md();
+}
+
+@mixin text-sm {
   font-size: $fs-50;
   line-height: 143%;
   color: colors.$color-grey-900;
 }
 
-.text-xs {
+.text-sm {
+  @include text-sm();
+}
+
+@mixin text-xs {
   font-size: $fs-25;
   line-height: 150%;
   color: colors.$color-grey-900;
+}
+
+.text-xs {
+  @include text-xs();
 }
