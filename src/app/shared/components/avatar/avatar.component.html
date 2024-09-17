@@ -1,0 +1,7 @@
+<div class="avatar {{ size().toLowerCase() }}">
+  @if (imageSrc()) {
+    <img class="full-width full-height" [src]="imageSrc()" alt="" />
+  } @else {
+    <mat-icon class="avatar__placeholder full-width full-height" svgIcon="user"></mat-icon>
+  }
+</div>

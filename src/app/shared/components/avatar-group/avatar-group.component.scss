@@ -1,0 +1,16 @@
+@use 'sphience';
+
+:host {
+  width: fit-content;
+
+  .avatar-group {
+    .avatar {
+      border-radius: sphience.$radius-full;
+      outline: 1.5px solid sphience.$color-white;
+
+      &:not(:first-child) {
+        margin-left: -4px;
+      }
+    }
+  }
+}

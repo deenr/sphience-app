@@ -1,0 +1,7 @@
+<div class="avatar-group flex-row">
+  @for (imageSrc of imagesSrc(); track $index) {
+    <div class="avatar">
+      <app-avatar [size]="avatarSize" [imageSrc]="imageSrc"></app-avatar>
+    </div>
+  }
+</div>
