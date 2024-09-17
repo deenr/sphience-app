@@ -2,7 +2,14 @@
 
 :host {
   .main {
+    overflow: hidden;
     background-color: sphience.$color-grey-25;
+
+    ::ng-deep router-outlet + * {
+      overflow: auto;
+      padding: 32px 0 48px 0;
+      width: 100%;
+    }
   }
 
   .sidebar {

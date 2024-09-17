@@ -1,1 +1,28 @@
-<p>dashboard works!</p>
+<app-header title="Welcome back, Dean" description="Reserve equipment, share research, and accelerate discoveries.">
+  <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
+  <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Make new reservation</button>
+</app-header>
+<div class="dashboard flex-column">
+  <section class="dashboard__quick-actions flex-row">
+    <app-quick-action icon="document" text="My documents"></app-quick-action>
+    <app-quick-action icon="heart" text="View favourite devices"></app-quick-action>
+  </section>
+  <section class="dashboard__devices flex-column">
+    <h2 class="display-xs text-semibold">Current and upcoming reservations</h2>
+    <div class="flex-row">
+      <app-device-card class="full-width" [data]="pickupMicroscope"></app-device-card>
+      <app-device-card class="full-width" [data]="returnMicroscope"></app-device-card>
+      <app-device-card class="full-width" [data]="pickupMicroscope"></app-device-card>
+      <div class="full-width"></div>
+    </div>
+  </section>
+  <section class="dashboard__devices flex-column">
+    <h2 class="display-xs text-semibold">Favourite devices</h2>
+    <div class="flex-row">
+      <app-device-card class="full-width" [data]="documentsMicroscope"></app-device-card>
+      <app-device-card class="full-width" [data]="availableMicroscope"></app-device-card>
+      <app-device-card class="full-width" [data]="unavailableMicroscope"></app-device-card>
+      <app-device-card class="full-width" [data]="unavailableMicroscope"></app-device-card>
+    </div>
+  </section>
+</div>

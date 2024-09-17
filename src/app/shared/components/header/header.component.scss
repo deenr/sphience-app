@@ -1,0 +1,29 @@
+@use 'sphience';
+
+:host {
+  .header {
+    display: grid;
+    column-gap: auto;
+    row-gap: 4px;
+    grid-template-areas:
+      'title actions'
+      'description actions';
+    padding: 0 32px;
+
+    &__title {
+      grid-area: title;
+      color: sphience.$color-grey-900;
+    }
+
+    &__description {
+      grid-area: description;
+      color: sphience.$color-grey-600;
+    }
+
+    &__actions {
+      grid-area: actions;
+      justify-self: end;
+      gap: 12px;
+    }
+  }
+}

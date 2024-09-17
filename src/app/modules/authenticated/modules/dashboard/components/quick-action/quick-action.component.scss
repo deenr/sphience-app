@@ -1,0 +1,30 @@
+@use 'sphience';
+
+:host {
+  .quick-action {
+    min-width: 240px;
+    padding: 24px;
+    gap: 16px;
+    border: 1px solid sphience.$color-grey-200;
+    background-color: sphience.$color-white;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: sphience.$color-grey-50;
+    }
+
+    &:active {
+      background-color: sphience.$color-white;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      color: sphience.$color-grey-400;
+    }
+
+    &__text {
+      color: sphience.$color-grey-900;
+    }
+  }
+}

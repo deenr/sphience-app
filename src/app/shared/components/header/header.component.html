@@ -1,0 +1,9 @@
+<header class="header">
+  <h1 class="header__title display-sm text-semibild">{{ title() }}</h1>
+  @if (description()) {
+    <p class="header__description text-md text-regular">{{ description() }}</p>
+  }
+  <div class="header__actions flex-row">
+    <ng-content></ng-content>
+  </div>
+</header>
