@@ -1,0 +1,78 @@
+@use 'sphience';
+
+:host {
+  .device-card {
+    gap: 16px;
+
+    &__image {
+      position: relative;
+      padding: 24px 0;
+      border: 1px solid sphience.$color-grey-200;
+      background-color: sphience.$color-white;
+      border-radius: 8px;
+
+      figure {
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 50%;
+        }
+
+        .image__placeholder {
+          min-height: 72px;
+          width: 50%;
+          align-items: center;
+          justify-content: center;
+          background-color: sphience.$color-primary-50;
+          border-radius: 4px;
+
+          mat-icon {
+            width: 32px;
+            height: 32px;
+            color: sphience.$color-primary-600;
+          }
+        }
+      }
+
+      .more {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        padding: 12px;
+        color: sphience.$color-grey-400;
+      }
+    }
+
+    &__info {
+      display: grid;
+      row-gap: 4px;
+      grid-template-areas:
+        'name status'
+        'description description';
+
+      h2 {
+        grid-area: name;
+        justify-self: start;
+        align-self: center;
+        color: sphience.$color-grey-900;
+      }
+
+      app-badge,
+      app-avatar-group {
+        grid-area: status;
+        justify-self: end;
+        align-self: center;
+      }
+
+      p {
+        grid-area: description;
+        justify-self: start;
+        align-self: center;
+        color: sphience.$color-grey-500;
+      }
+    }
+  }
+}
