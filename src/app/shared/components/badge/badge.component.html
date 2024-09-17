@@ -1,0 +1,17 @@
+<span [class]="getBadgeClasses()">
+  @if (type() === badgeType.DOT) {
+    <div></div>
+  }
+  @if (type() === badgeType.LEADING_ICON) {
+    <mat-icon class="icon" [svgIcon]="icon() ?? ''" (click)="leadingClick.emit()"></mat-icon>
+  }
+  <p class="text-sm text-medium">
+    <ng-content></ng-content>
+  </p>
+  @if (type() === badgeType.TRAILING_ICON) {
+    <mat-icon class="icon" [svgIcon]="icon() ?? ''" (click)="trailingClick.emit()"></mat-icon>
+  }
+  @if (type() === badgeType.CLOSE) {
+    <mat-icon class="icon" svgIcon="close-badge" (click)="closeClick.emit()"></mat-icon>
+  }
+</span>
