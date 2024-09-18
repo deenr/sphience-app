@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AvailableMicroscope, DocumentsMicroscope, PickupMicroscope, ReturnMicroscope, UnavailableMicroscope } from '@shared/components/device-card/device-card.component';
 
 @Component({
@@ -33,4 +34,10 @@ export class DashboardComponent {
     documentCount: 12,
     users: ['', '', '']
   };
+
+  public constructor(private readonly router: Router) {}
+
+  public navigateToFavouriteDevices(): void {
+    this.router.navigate(['/equipment'], { queryParams: { tab: 'favourites' } });
+  }
 }

@@ -5,7 +5,7 @@
 <div class="dashboard flex-column">
   <section class="dashboard__quick-actions flex-row">
     <app-quick-action icon="document" text="My documents"></app-quick-action>
-    <app-quick-action icon="heart" text="View favourite devices"></app-quick-action>
+    <app-quick-action icon="heart" text="View favourite devices" (click)="navigateToFavouriteDevices()"></app-quick-action>
   </section>
   <section class="dashboard__devices flex-column">
     <h2 class="display-xs text-semibold">Current and upcoming reservations</h2>
