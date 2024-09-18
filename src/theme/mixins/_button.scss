@@ -339,4 +339,57 @@
       }
     }
   }
+
+  .mat-button-toggle-group {
+    border-radius: 8px;
+    border: 1px solid colors.$color-grey-300;
+    background-color: colors.$color-white;
+    // cursor: pointer;
+
+    .mat-button-toggle {
+      &:hover,
+      &-checked {
+        background-color: colors.$color-grey-50 !important;
+      }
+
+      &-checked {
+        background-color: colors.$color-grey-50 !important;
+
+        .mat-button-toggle-button .mat-button-toggle-label-content {
+          color: colors.$color-grey-800 !important;
+
+          .mat-icon {
+            color: colors.$color-grey-800 !important;
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        border-left: 1px solid colors.$color-grey-300;
+      }
+
+      .mat-button-toggle-button {
+        .mat-button-toggle-label-content {
+          position: relative;
+          padding: 10px 16px 10px 44px;
+          @include typography.text-sm();
+          @include typography.text-semibold();
+          color: colors.$color-grey-600;
+
+          .mat-icon {
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            width: 20px;
+            height: 20px;
+            color: colors.$color-grey-400;
+          }
+        }
+      }
+
+      .mat-pseudo-checkbox {
+        display: none;
+      }
+    }
+  }
 }

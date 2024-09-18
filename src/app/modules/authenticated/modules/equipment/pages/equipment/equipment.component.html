@@ -14,5 +14,18 @@
 </mat-menu>
 
 <div class="equipment flex-column full-height">
-  <app-table class="full-height" [data]="data" [columns]="columns" title="All devices"></app-table>
+  <section class="equipment__filter flex-row">
+    <mat-form-field class="filter__input--search full-width">
+      <mat-icon matIconPrefix svgIcon="search"></mat-icon>
+      <input matInput placeholder="Search for device" />
+    </mat-form-field>
+    <button mat-stroked-button><mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">Jan 6, 2024 – Jan 13, 2024</span></button>
+    <mat-button-toggle-group [value]="$equipmentView()" (valueChange)="onViewChange($event)">
+      <mat-button-toggle value="grid"><mat-icon svgIcon="grid"></mat-icon>Grid view</mat-button-toggle>
+      <mat-button-toggle value="list"><mat-icon svgIcon="list"></mat-icon>List view</mat-button-toggle>
+    </mat-button-toggle-group>
+  </section>
+  @if ($equipmentView() === 'list') {
+    <app-table class="full-height" [data]="data" [columns]="columns" title="All devices"></app-table>
+  } @else {}
 </div>
