@@ -30,7 +30,7 @@ export interface DocumentsMicroscope extends BaseMicroscopeData {
   users: string[];
 }
 
-type MicroscopeData = AvailableMicroscope | UnavailableMicroscope | PickupMicroscope | ReturnMicroscope | DocumentsMicroscope;
+export type MicroscopeData = AvailableMicroscope | UnavailableMicroscope | PickupMicroscope | ReturnMicroscope | DocumentsMicroscope;
 
 @Component({
   standalone: true,

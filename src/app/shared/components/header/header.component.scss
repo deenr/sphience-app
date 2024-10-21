@@ -1,6 +1,7 @@
 @use 'sphience';
 
 :host {
+  display: block;
   padding: 0 32px;
 
   .header {

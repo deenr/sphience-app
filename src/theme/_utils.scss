@@ -36,6 +36,10 @@
   height: 100%;
 }
 
+.min-height-0 {
+  min-height: 0;
+}
+
 @mixin shadow-xs {
   box-shadow: 0 1px 2px 0 rgba(colors.$color-grey-900, 0.05);
 }

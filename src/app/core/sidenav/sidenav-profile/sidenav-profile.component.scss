@@ -30,6 +30,10 @@
       margin-left: auto;
       margin-right: 8px;
       color: sphience.$color-grey-500;
+
+      &:hover {
+        color: sphience.$color-grey-700;
+      }
     }
   }
 }

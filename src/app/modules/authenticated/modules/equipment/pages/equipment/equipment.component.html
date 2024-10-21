@@ -1,8 +1,8 @@
 <app-header title="Equipment catalog" description="View the catalog of the university here.">
   <ng-container actions>
-    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>New reservation</button>
-    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
     <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
+    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
+    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>New reservation</button>
   </ng-container>
   <ng-container tabs>
     <app-tabs [tabs]="tabs" [(activeTab)]="activeTab"></app-tabs>
@@ -14,12 +14,19 @@
 </mat-menu>
 
 <div class="equipment flex-column full-height">
-  <section class="equipment__filter flex-row">
+  <section class="equipment__filter flex-row" [formGroup]="filterForm">
     <mat-form-field class="filter__input--search full-width">
       <mat-icon matIconPrefix svgIcon="search"></mat-icon>
-      <input matInput placeholder="Search for device" />
+      <input matInput placeholder="Search for device" formControlName="name" />
     </mat-form-field>
-    <button mat-stroked-button><mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">Jan 6, 2024 – Jan 13, 2024</span></button>
+    <div class="filter__input--dates">
+      <button mat-stroked-button [class.active]="selectedDates" [matMenuTriggerFor]="datepicker">
+        <mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">{{ selectDateButtonText }}</span>
+      </button>
+      @if (selectedDates) {
+        <button class="icon-only" mat-stroked-button (click)="clearDates()"><mat-icon svgIcon="close"></mat-icon></button>
+      }
+    </div>
     <mat-button-toggle-group [value]="$equipmentView()" (valueChange)="onViewChange($event)">
       <mat-button-toggle value="grid"><mat-icon svgIcon="grid"></mat-icon>Grid view</mat-button-toggle>
       <mat-button-toggle value="list"><mat-icon svgIcon="list"></mat-icon>List view</mat-button-toggle>
@@ -27,5 +34,11 @@
   </section>
   @if ($equipmentView() === 'list') {
     <app-table class="full-height" [data]="data" [columns]="columns" title="All devices"></app-table>
-  } @else {}
+  } @else {
+    <app-equipment-grid class="full-height min-height-0" [data]="data"></app-equipment-grid>
+  }
 </div>
+
+<mat-menu #datepicker="matMenu">
+  <!-- <app-datepicker-menu [date]="selectedDates" (dateChange)="onDateChange($event)" (click)="$event.stopPropagation()"></app-datepicker-menu> -->
+</mat-menu>

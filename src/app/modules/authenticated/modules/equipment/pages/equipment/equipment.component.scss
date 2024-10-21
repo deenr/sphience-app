@@ -19,6 +19,16 @@
           max-width: 400px;
           margin-right: auto;
         }
+
+        &--dates {
+          button:first-child.active {
+            border-radius: 8px 0 0 8px !important;
+          }
+          button:last-child:not(:only-child) {
+            border-radius: 0 8px 8px 0 !important;
+            border-left: 0 !important;
+          }
+        }
       }
     }
   }

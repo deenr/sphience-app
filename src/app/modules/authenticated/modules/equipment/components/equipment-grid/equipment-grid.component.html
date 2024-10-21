@@ -1,0 +1,5 @@
+<section class="equipment-grid full-height">
+  @for (equipment of data(); track $index) {
+    <app-device-card [data]="equipment"></app-device-card>
+  }
+</section>

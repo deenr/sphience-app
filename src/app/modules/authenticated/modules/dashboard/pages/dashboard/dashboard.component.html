@@ -1,6 +1,8 @@
 <app-header title="Welcome back, Dean" description="Reserve equipment, share research, and accelerate discoveries.">
-  <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon> Upload document</button>
-  <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Make new reservation</button>
+  <ng-container actions>
+    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon>Upload document</button>
+    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Make new reservation</button>
+  </ng-container>
 </app-header>
 <div class="dashboard flex-column">
   <section class="dashboard__quick-actions flex-row">
