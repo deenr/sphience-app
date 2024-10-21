@@ -1,10 +1,12 @@
 <header class="header">
-  <h1 class="header__title display-sm text-semibild">{{ title() }}</h1>
+  <h1 class="header__title min-width-0 display-sm text-semibild">{{ title() }}</h1>
   @if (description()) {
-    <p class="header__description text-md text-regular">{{ description() }}</p>
+    <p class="header__description min-width-0 text-md text-regular">{{ description() }}</p>
   }
-  <div class="header__actions flex-row-reverse">
+  <div class="header__actions min-width-0 flex-row-reverse">
     <ng-content select="[actions]"></ng-content>
   </div>
 </header>
-<ng-content class="tabs" select="[tabs]"></ng-content>
+<div class="tabs">
+  <ng-content select="[tabs]"></ng-content>
+</div>

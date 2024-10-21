@@ -5,12 +5,12 @@
   </div>
   <div class="sidenav__top flex-column">
     @for (item of topItems(); track $index) {
-      <app-sidenav-item [icon]="item.icon" [text]="item.text" [link]="item.link"></app-sidenav-item>
+      <app-sidenav-item [icon]="item.icon" [text]="item.text" [link]="item.link" (sidenavItemClick)="sidenavClose.emit()"></app-sidenav-item>
     }
   </div>
   <div class="sidenav__bottom flex-column">
     @for (item of bottomItems(); track $index) {
-      <app-sidenav-item [icon]="item.icon" [text]="item.text" [link]="item.link"></app-sidenav-item>
+      <app-sidenav-item [icon]="item.icon" [text]="item.text" [link]="item.link" (sidenavItemClick)="sidenavClose.emit()"></app-sidenav-item>
     }
   </div>
   <mat-divider></mat-divider>

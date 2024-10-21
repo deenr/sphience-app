@@ -2,20 +2,34 @@
 
 :host {
   display: block;
-  padding: 0 32px;
+  padding: 0 16px;
+
+  @include sphience.breakpoint-md {
+    padding: 0 32px;
+  }
 
   .header {
     display: grid;
-    column-gap: auto;
-    row-gap: 4px;
     grid-template-areas:
-      'title actions'
-      'description actions';
-    margin-bottom: 24px;
+      'title title'
+      'description description'
+      'actions actions';
+
+    @include sphience.breakpoint-lg {
+      column-gap: auto;
+      row-gap: 4px;
+      grid-template-areas:
+        'title actions'
+        'description actions';
+    }
 
     &__title {
       grid-area: title;
       color: sphience.$color-grey-900;
+
+      @include sphience.breakpoint-lg {
+        text-wrap: nowrap;
+      }
     }
 
     &__description {
@@ -24,9 +38,22 @@
     }
 
     &__actions {
+      margin-top: 16px;
       grid-area: actions;
-      justify-self: end;
+      justify-self: start;
+      flex-wrap: wrap;
       gap: 12px;
+      flex-direction: row;
+
+      @include sphience.breakpoint-lg {
+        flex-wrap: nowrap;
+        margin-top: 0;
+        justify-self: end;
+      }
     }
+  }
+
+  .tabs {
+    margin-top: 20px;
   }
 }

@@ -4,6 +4,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AuthService } from './auth/auth.service';
+import { BreakpointService } from './services/breakpoint.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { SidenavModule } from './sidenav/sidenav.module';
 
@@ -18,7 +19,8 @@ import { SidenavModule } from './sidenav/sidenav.module';
       multi: true,
       deps: [AuthService]
     },
-    LocalStorageService
+    LocalStorageService,
+    BreakpointService
   ]
 })
 export class CoreModule {

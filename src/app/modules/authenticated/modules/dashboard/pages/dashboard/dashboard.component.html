@@ -1,17 +1,17 @@
 <app-header title="Welcome back, Dean" description="Reserve equipment, share research, and accelerate discoveries.">
   <ng-container actions>
-    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon>Upload document</button>
-    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Make new reservation</button>
+    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon>Document</button>
+    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Reservation</button>
   </ng-container>
 </app-header>
 <div class="dashboard flex-column">
-  <section class="dashboard__quick-actions flex-row">
+  <section class="dashboard__quick-actions">
     <app-quick-action icon="document" text="My documents"></app-quick-action>
     <app-quick-action icon="heart" text="View favourite devices" (click)="navigateToFavouriteDevices()"></app-quick-action>
   </section>
   <section class="dashboard__devices flex-column">
     <h2 class="display-xs text-semibold">Current and upcoming reservations</h2>
-    <div class="flex-row">
+    <div class="devices__list">
       <app-device-card class="full-width" [data]="pickupMicroscope"></app-device-card>
       <app-device-card class="full-width" [data]="returnMicroscope"></app-device-card>
       <app-device-card class="full-width" [data]="pickupMicroscope"></app-device-card>
@@ -20,7 +20,7 @@
   </section>
   <section class="dashboard__devices flex-column">
     <h2 class="display-xs text-semibold">Favourite devices</h2>
-    <div class="flex-row">
+    <div class="devices__list">
       <app-device-card class="full-width" [data]="documentsMicroscope"></app-device-card>
       <app-device-card class="full-width" [data]="availableMicroscope"></app-device-card>
       <app-device-card class="full-width" [data]="unavailableMicroscope"></app-device-card>

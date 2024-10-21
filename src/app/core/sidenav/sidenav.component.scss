@@ -2,14 +2,23 @@
 
 :host {
   .sidenav {
-    width: 310px;
+    width: 100%;
     padding: 32px 16px;
     gap: 24px;
     background-color: sphience.$color-white;
     border-right: 1px solid sphience.$color-grey-200;
 
+    @include sphience.breakpoint-md() {
+      width: 310px;
+    }
+
     &__logo {
+      display: none;
       gap: 6px;
+
+      @include sphience.breakpoint-md() {
+        display: flex !important;
+      }
 
       mat-icon {
         width: 32px;

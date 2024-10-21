@@ -1,0 +1,50 @@
+@use 'sphience';
+
+:host {
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+
+    &__logo {
+      gap: 6px;
+
+      mat-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      p {
+        color: sphience.$color-grey-900;
+      }
+    }
+
+    &__hamburger {
+      position: relative;
+      z-index: 1;
+      padding: 8px;
+      color: sphience.$color-grey-500;
+
+      .hamburger-icon > * {
+        transition: all 0.3s ease;
+        transform-origin: center;
+        transform-style: preserve-3d;
+      }
+
+      &.opened {
+        #bottom-line {
+          transform: translate(4.5px, -4px) rotate(45deg);
+        }
+
+        #middle-line {
+          opacity: 0;
+        }
+
+        #top-line {
+          transform: translate(4.5px, 4px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<div class="sidenav-item flex-row cursor-pointer" [routerLink]="link()" routerLinkActive="active">
+<div class="sidenav-item flex-row cursor-pointer" [routerLink]="link()" routerLinkActive="active" (click)="sidenavItemClick.emit()">
   <mat-icon [svgIcon]="icon()"></mat-icon>
   <p class="text-md text-semibold">{{ text() }}</p>
 </div>

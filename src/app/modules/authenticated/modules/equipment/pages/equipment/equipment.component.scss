@@ -8,16 +8,46 @@
   .equipment {
     min-height: 0;
     margin-top: 32px;
-    padding: 0 32px;
+    padding: 0 16px;
     gap: 24px;
 
+    @include sphience.breakpoint-md {
+      padding: 0 32px;
+    }
+
     &__filter {
+      display: flex;
       gap: 16px;
+      flex-direction: column;
+
+      @include sphience.breakpoint-sm {
+        flex-direction: row;
+      }
+
+      @include sphience.breakpoint-md {
+        flex-direction: column;
+      }
+
+      @include sphience.breakpoint-lg {
+        flex-direction: row;
+      }
 
       .filter__input {
+        &--right {
+          gap: 16px;
+
+          @include sphience.breakpoint-lg {
+            justify-content: end;
+          }
+        }
+
         &--search {
-          max-width: 400px;
+          width: 100%;
           margin-right: auto;
+
+          @include sphience.breakpoint-lg {
+            max-width: 400px;
+          }
         }
 
         &--dates {

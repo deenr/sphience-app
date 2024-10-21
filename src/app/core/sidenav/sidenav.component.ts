@@ -19,4 +19,5 @@ export class SidenavComponent {
   ]);
 
   public logout = output<void>();
+  public sidenavClose = output<void>();
 }

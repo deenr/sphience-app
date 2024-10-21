@@ -1,4 +1,12 @@
-<main class="main flex-row full-height">
-  <app-sidenav (logout)="logout()"></app-sidenav>
-  <router-outlet></router-outlet>
-</main>
+@let isDesktop = isDesktop$ | async;
+@if (!isDesktop) {
+  <app-mobile-header [sidenavOpened]="$isSidenavOpened()" (sidenavToggle)="onSidenavToggle()"></app-mobile-header>
+}
+<mat-drawer-container [hasBackdrop]="!isDesktop">
+  <mat-drawer #drawer [mode]="isDesktop ? 'side' : 'over'" position="start" [opened]="isDesktop || $isSidenavOpened()">
+    <app-sidenav (sidenavClose)="!isDesktop && onSidenavClose()" (logout)="logout()"></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -3,11 +3,17 @@
 :host {
   .dashboard {
     margin-top: 32px;
-    padding: 0 32px;
+    padding: 0 16px;
     gap: 24px;
 
+    @include sphience.breakpoint-md {
+      padding: 0 32px;
+    }
+
     &__quick-actions {
+      display: grid;
       gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
     }
 
     &__devices {
@@ -17,7 +23,9 @@
         color: sphience.$color-grey-900;
       }
 
-      div {
+      .devices__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
         gap: 24px;
       }
     }
