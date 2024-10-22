@@ -5,6 +5,7 @@ export enum TableColumnDataType {
   TITLE_AND_DESCRIPTION = 'TITLE_AND_DESCRIPTION',
   BADGE = 'BADGE',
   AVATAR_GROUP = 'AVATAR_GROUP',
+  IMAGE = 'IMAGE',
   EDIT = 'EDIT',
   DELETE = 'DELETE'
 }

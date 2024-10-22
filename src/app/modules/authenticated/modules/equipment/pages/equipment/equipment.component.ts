@@ -51,6 +51,7 @@ export class EquipmentComponent {
 
   public columns = [
     new TableColumnBuilder().setField('name').setDataType(TableColumnDataType.TITLE_AND_DESCRIPTION).setTitleAndDescription('title', 'description').setHeaderName('Device name').build(),
+    new TableColumnBuilder().setField('imageSrc').setDataType(TableColumnDataType.IMAGE).setHeaderName('Image').build(),
     new TableColumnBuilder()
       .setDataType(TableColumnDataType.BADGE)
       .setHeaderName('Availablity')

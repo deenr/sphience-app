@@ -1,0 +1,25 @@
+@let src = imageSrc();
+<figure class="table__image full-height">
+  <app-tooltip-with-content>
+    <div trigger class="image__trigger full-height">
+      @if (src) {
+        <img class="full-height" src="{{ src }}" />
+      } @else {
+        <div class="image__placeholder full-height flex-row">
+          <mat-icon svgIcon="image"></mat-icon>
+        </div>
+      }
+    </div>
+    <ng-container content>
+      <div class="image__content">
+        @if (src) {
+          <img class="full-height" src="{{ src }}" />
+        } @else {
+          <div class="image__placeholder full-height flex-row">
+            <mat-icon svgIcon="image"></mat-icon>
+          </div>
+        }
+      </div>
+    </ng-container>
+  </app-tooltip-with-content>
+</figure>

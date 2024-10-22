@@ -1,0 +1,49 @@
+@use 'sphience';
+
+:host {
+  height: 100%;
+
+  .table__image {
+    .image__trigger {
+      img,
+      .image__placeholder {
+        width: 72px;
+        height: 100%;
+        border-radius: 4px;
+      }
+
+      .image__placeholder {
+        align-items: center;
+        justify-content: center;
+        background-color: sphience.$color-primary-50;
+
+        mat-icon {
+          width: 18px;
+          height: 18px;
+          color: sphience.$color-primary-600;
+        }
+      }
+    }
+  }
+}
+
+.image__content {
+  img,
+  .image__placeholder {
+    width: 256px;
+    height: 196px;
+    border-radius: 4px;
+  }
+
+  .image__placeholder {
+    align-items: center;
+    justify-content: center;
+    background-color: sphience.$color-primary-50;
+
+    mat-icon {
+      width: 32px;
+      height: 32px;
+      color: sphience.$color-primary-600;
+    }
+  }
+}

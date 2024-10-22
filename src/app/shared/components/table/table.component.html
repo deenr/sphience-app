@@ -47,6 +47,10 @@
                 <app-avatar-group [imagesSrc]="documents" [size]="AvatarGroupSize.XS"></app-avatar-group>
               }
             }
+            @case (tableColumnDataType.IMAGE) {
+              @let imageSrc = row | nestedValue: column;
+              <app-table-image [imageSrc]="imageSrc"></app-table-image>
+            }
             @case (tableColumnDataType.EDIT) {
               <mat-icon data-testid="table-edit-icon" class="action-icon" svgIcon="pencil" (click)="onCellEdit($event, row)"></mat-icon>
             }

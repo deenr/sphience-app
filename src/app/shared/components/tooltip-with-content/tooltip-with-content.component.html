@@ -1,0 +1,8 @@
+<div class="full-height" #trigger="matMenuTrigger" [matMenuTriggerFor]="content" (mouseenter)="openMenu()" (mouseleave)="startCloseTimer()">
+  <ng-content select="[trigger]"></ng-content>
+</div>
+<mat-menu #content="matMenu" [hasBackdrop]="false">
+  <div (mouseenter)="openMenu()" (mouseleave)="startCloseTimer()">
+    <ng-content select="[content]"></ng-content>
+  </div>
+</mat-menu>

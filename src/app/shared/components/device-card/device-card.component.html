@@ -19,7 +19,7 @@
         <p class="text-sm text-medium">Available till {{ availableData().availableUntil | date }}</p>
       }
       @case (isUnavailableMicroscope(data())) {
-        <app-badge [color]="Color.ERROR" [size]="BadgeSize.SM">Unvailable</app-badge>
+        <app-badge [color]="Color.ERROR" [size]="BadgeSize.SM">Unavailable</app-badge>
         <p class="text-sm text-medium">Available from {{ unavailableData().availableFrom | date }}</p>
       }
       @case (isPickupMicroscope(data())) {

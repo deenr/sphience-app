@@ -11,7 +11,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { AvatarGroupComponent } from '../avatar-group/avatar-group.component';
 import { BadgeComponent } from '../badge/badge.component';
+import { TooltipWithContentComponent } from '../tooltip-with-content/tooltip-with-content.component';
 import { NestedValuePipe } from './pipes/nested-value.pipe';
+import { TableImageComponent } from './table-image/table-image.component';
 import { TableOverlayComponent } from './table-overlay/table-overlay.component';
 import { TableComponent } from './table.component';
 
@@ -28,9 +30,11 @@ import { TableComponent } from './table.component';
     MatMenuModule,
     TranslateModule,
     BadgeComponent,
-    AvatarGroupComponent
+    AvatarGroupComponent,
+    MatTooltipModule,
+    TooltipWithContentComponent
   ],
-  declarations: [TableComponent, NestedValuePipe, TableOverlayComponent],
+  declarations: [TableComponent, NestedValuePipe, TableOverlayComponent, TableImageComponent],
   exports: [TableComponent]
 })
 export class TableModule {}
