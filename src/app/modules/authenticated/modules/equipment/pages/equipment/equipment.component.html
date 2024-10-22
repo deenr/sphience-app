@@ -1,8 +1,6 @@
 <app-header title="Equipment catalog" description="View the catalog of the university here.">
   <ng-container actions>
-    <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
-    <button mat-stroked-button><mat-icon svgIcon="cloud-upload"></mat-icon>Document</button>
-    <button mat-flat-button color="primary"><mat-icon svgIcon="plus"></mat-icon>Reservation</button>
+    <app-action-buttons [primaryButton]="primaryActionButton" [secondaryButton]="secondaryActionButton" [extraButtons]="extraActionButtons"></app-action-buttons>
   </ng-container>
   <ng-container tabs>
     <app-tabs [tabs]="tabs" [(activeTab)]="activeTab"></app-tabs>

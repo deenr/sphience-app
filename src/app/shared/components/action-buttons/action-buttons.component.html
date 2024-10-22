@@ -1,0 +1,35 @@
+@let primary = primaryButton();
+@if (showPrimaryInline()) {
+  <button #primaryBtn mat-flat-button color="primary">
+    @if (primary.icon) {
+      <mat-icon [svgIcon]="primary.icon"></mat-icon>
+    }
+    {{ primary.text }}
+  </button>
+}
+
+@let secondary = secondaryButton();
+<!-- only show if these is space otherwise put the secondary button together with the extra buttons-->
+@if (secondary && showSecondaryInline()) {
+  <button #secondaryBtn mat-stroked-button>
+    @if (secondary.icon) {
+      <mat-icon [svgIcon]="secondary.icon"></mat-icon>
+    }
+    {{ secondary.text }}
+  </button>
+}
+
+@let extra = menuButtons();
+@if (extra && extra.length > 0) {
+  <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
+  <mat-menu #extraOptions="matMenu" class="extra-actions">
+    @for (extraButton of extra; track $index) {
+      <button mat-menu-item>
+        @if (extraButton.icon) {
+          <mat-icon [svgIcon]="extraButton.icon"></mat-icon>
+        }
+        {{ extraButton.text }}
+      </button>
+    }
+  </mat-menu>
+}

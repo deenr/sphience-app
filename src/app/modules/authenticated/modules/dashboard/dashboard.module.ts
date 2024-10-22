@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ActionButtonsComponent } from '@shared/components/action-buttons/action-buttons.component';
 import { DeviceCardComponent } from '@shared/components/device-card/device-card.component';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { QuickActionComponent } from './components/quick-action/quick-action.component';
@@ -9,6 +10,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [DashboardComponent, QuickActionComponent],
-  imports: [DashboardRoutingModule, HeaderComponent, DeviceCardComponent, MatButtonModule, MatIconModule]
+  imports: [DashboardRoutingModule, HeaderComponent, DeviceCardComponent, MatButtonModule, MatIconModule, ActionButtonsComponent]
 })
 export class DashboardModule {}

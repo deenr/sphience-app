@@ -16,6 +16,13 @@ type EquipmentView = 'grid' | 'list';
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent {
+  public primaryActionButton = { icon: 'plus', text: 'Make new reservation' };
+  public secondaryActionButton = { icon: 'cloud-upload', text: 'Upload document' };
+  public extraActionButtons = [
+    { icon: 'plus', text: 'Add device' },
+    { icon: 'trash', text: 'Remove selected device(s)' }
+  ];
+
   public tabs: TabsItem<EquipmentTabKey>[] = [
     { key: 'all', value: 'All devices' },
     { key: 'available', value: 'Available' },

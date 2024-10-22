@@ -2,14 +2,18 @@
 
 :host {
   .equipment-grid {
+    display: flex;
+    flex-direction: column;
     margin: 0 -32px;
     padding: 0 32px;
     overflow: scroll;
-    display: grid;
     column-gap: 24px;
     row-gap: 16px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
-    grid-template-rows: min-content;
+
+    @include sphience.breakpoint-sm {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+      grid-template-rows: min-content;
+    }
   }
 }

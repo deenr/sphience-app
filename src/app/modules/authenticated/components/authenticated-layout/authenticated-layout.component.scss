@@ -21,9 +21,13 @@
     .mat-drawer-content {
       height: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       overflow: hidden;
       background-color: sphience.$color-grey-25;
+
+      @include sphience.breakpoint-md() {
+        flex-direction: row;
+      }
 
       ::ng-deep router-outlet + * {
         overflow: auto;

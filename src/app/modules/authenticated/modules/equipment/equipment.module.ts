@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { ActionButtonsComponent } from '@shared/components/action-buttons/action-buttons.component';
 import { DeviceCardComponent } from '@shared/components/device-card/device-card.component';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { TableModule } from '@shared/components/table/table.module';
@@ -32,7 +33,8 @@ import { EquipmentComponent } from './pages/equipment/equipment.component';
     MatButtonToggleModule,
     MatDialogModule,
     ReactiveFormsModule,
-    DeviceCardComponent
+    DeviceCardComponent,
+    ActionButtonsComponent
   ]
 })
 export class EquipmentModule {}

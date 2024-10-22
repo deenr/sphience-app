@@ -8,6 +8,9 @@ import { AvailableMicroscope, DocumentsMicroscope, PickupMicroscope, ReturnMicro
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  public primaryActionButton = { icon: 'plus', text: 'Make new reservation' };
+  public secondaryActionButton = { icon: 'cloud-upload', text: 'Upload document' };
+
   public availableMicroscope: AvailableMicroscope = {
     name: 'hello',
     imageSrc: '',

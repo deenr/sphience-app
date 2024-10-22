@@ -21,6 +21,7 @@
       grid-template-areas:
         'title actions'
         'description actions';
+      grid-template-columns: fit-content(100%) 1fr;
     }
 
     &__title {
@@ -48,7 +49,7 @@
       @include sphience.breakpoint-lg {
         flex-wrap: nowrap;
         margin-top: 0;
-        justify-self: end;
+        justify-content: end;
       }
     }
   }
