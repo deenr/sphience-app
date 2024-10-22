@@ -12,5 +12,47 @@
         margin-left: -4px;
       }
     }
+
+    .extra {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: sphience.$radius-full;
+      background-color: sphience.$color-primary-50;
+      outline: 1.5px solid sphience.$color-white;
+      margin-left: -4px;
+
+      @include sphience.text-xs();
+      @include sphience.text-medium();
+
+      color: sphience.$color-primary-600;
+
+      &.xs {
+        width: 24px;
+        height: 24px;
+
+        .avatar__placeholder {
+          padding: 4px;
+        }
+      }
+
+      &.sm {
+        width: 32px;
+        height: 32px;
+
+        .avatar__placeholder {
+          padding: 6px;
+        }
+      }
+
+      &.md {
+        width: 40px;
+        height: 40px;
+
+        .avatar__placeholder {
+          padding: 8px;
+        }
+      }
+    }
   }
 }

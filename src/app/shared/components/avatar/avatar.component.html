@@ -1,6 +1,7 @@
 <div class="avatar {{ size().toLowerCase() }}">
-  @if (imageSrc()) {
-    <img class="full-width full-height" [src]="imageSrc()" alt="" />
+  @let doc = document();
+  @if (doc) {
+    <img class="full-width full-height" [src]="doc?.uploadedBy?.avatar" [alt]="doc?.uploadedBy?.name" />
   } @else {
     <mat-icon class="avatar__placeholder full-width full-height" svgIcon="user"></mat-icon>
   }

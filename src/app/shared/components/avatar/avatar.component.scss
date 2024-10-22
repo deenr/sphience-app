@@ -5,6 +5,10 @@
     border-radius: sphience.$radius-full;
     background-color: sphience.$color-primary-50;
 
+    img {
+      border-radius: sphience.$radius-full;
+    }
+
     &.xs {
       width: 24px;
       height: 24px;

@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { Equipment } from '@core/models/types/equipment.interface';
 
 @Component({
   selector: 'app-equipment-grid',
@@ -6,5 +7,5 @@ import { Component, input } from '@angular/core';
   styleUrls: ['./equipment-grid.component.scss']
 })
 export class EquipmentGridComponent {
-  public data = input.required<any[]>();
+  public data = input.required<Equipment[]>();
 }

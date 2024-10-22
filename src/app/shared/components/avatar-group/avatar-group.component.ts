@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
+import { EquipmentDocument } from '@core/models/types/equipment.interface';
 import { AvatarComponent, AvatarSize } from '../avatar/avatar.component';
 
 export enum AvatarGroupSize {
@@ -16,9 +17,17 @@ export enum AvatarGroupSize {
 })
 export class AvatarGroupComponent {
   public size = input<AvatarGroupSize>(AvatarGroupSize.MD);
-  public imagesSrc = input<string[]>();
+  public documents = input.required<EquipmentDocument[]>();
+  public maxItems = input<number>(Infinity);
 
   public get avatarSize(): AvatarSize {
     return this.size() as any as AvatarSize;
   }
+
+  public $visibleDocuments = computed(() => (this.$hasMoreImages() ? [...this.documents()]?.splice(0, this.maxItems() - 1) : [...this.documents()]));
+
+  public $hasMoreImages = computed(() => {
+    const documents = this.documents();
+    return !!documents && documents?.length > this.maxItems();
+  });
 }

@@ -157,7 +157,8 @@
         background-color: colors.$color-grey-50 !important;
       }
 
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-grey-100,
           0px 0px 0px 4px colors.$color-grey-100 !important;
@@ -185,7 +186,8 @@
         background-color: colors.$color-primary-50 !important;
       }
 
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-primary-100,
           0px 0px 0px 4px colors.$color-primary-100 !important;
@@ -213,7 +215,8 @@
         background-color: colors.$color-accent-25 !important;
       }
 
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-accent-100,
           0px 0px 0px 4px colors.$color-accent-100 !important;
@@ -241,7 +244,8 @@
         background-color: colors.$color-error-50 !important;
       }
 
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-error-100,
           0px 0px 0px 4px colors.$color-error-100 !important;
@@ -267,7 +271,8 @@
       &:hover {
         background-color: colors.$color-grey-700 !important;
       }
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-grey-100,
           0px 0px 0px 4px colors.$color-grey-100 !important;
@@ -287,7 +292,8 @@
       &:hover {
         background-color: colors.$color-primary-800 !important;
       }
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-primary-100,
           0px 0px 0px 4px colors.$color-primary-100 !important;
@@ -307,7 +313,8 @@
       &:hover {
         background-color: colors.$color-accent-700 !important;
       }
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-accent-100,
           0px 0px 0px 4px colors.$color-accent-100 !important;
@@ -327,7 +334,8 @@
       &:hover {
         background-color: colors.$color-error-700 !important;
       }
-      &:active {
+      &:active,
+      &:focus-visible {
         box-shadow:
           0px 1px 2px colors.$color-error-100,
           0px 0px 0px 4px colors.$color-error-100 !important;
@@ -345,11 +353,19 @@
     border: 1px solid colors.$color-grey-300;
     background-color: colors.$color-white;
     // cursor: pointer;
+    overflow: visible !important;
 
     .mat-button-toggle {
       &:hover,
       &-checked {
         background-color: colors.$color-grey-50 !important;
+      }
+
+      &:active,
+      &.cdk-keyboard-focused {
+        box-shadow:
+          0px 1px 2px colors.$color-grey-100,
+          0px 0px 0px 4px colors.$color-grey-100 !important;
       }
 
       &-checked {
@@ -364,11 +380,28 @@
         }
       }
 
-      &:not(:first-child) {
-        border-left: 1px solid colors.$color-grey-300;
+      &:first-child,
+      &:last-child {
+        border: 1px solid colors.$color-grey-300;
+        overflow: hidden;
+      }
+
+      &:first-child {
+        margin: -1px -1px -1px -1px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      &:last-child {
+        margin: -1px -1px -1px 0;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
       }
 
       .mat-button-toggle-button {
+        position: relative;
+        z-index: 999;
+
         .mat-button-toggle-label-content {
           position: relative;
           padding: 10px 16px 10px 44px;
@@ -385,6 +418,10 @@
             color: colors.$color-grey-400;
           }
         }
+      }
+
+      .mat-button-toggle-ripple .mat-ripple-element {
+        background-color: colors.$color-white !important;
       }
 
       .mat-pseudo-checkbox {

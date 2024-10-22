@@ -2,11 +2,13 @@
 
 :host {
   .badge {
+    width: 100%;
     display: inline-flex;
     align-items: center;
     gap: 4px;
     border-radius: 16px;
     mix-blend-mode: multiply;
+    overflow: hidden;
 
     &.dot {
       &.sm {
@@ -28,7 +30,9 @@
       }
 
       div {
+        min-width: 6px;
         width: 6px;
+        min-height: 6px;
         height: 6px;
         margin: 1px;
         border-radius: 50%;
@@ -65,7 +69,10 @@
     }
 
     p {
+      text-wrap: nowrap;
       text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .icon {

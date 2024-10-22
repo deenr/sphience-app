@@ -1,6 +1,6 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel" mat-stretch-tabs="false" mat-align-tabs="start">
-  @for (tab of tabs(); track tab.key) {
-    <a mat-tab-link (click)="changeActiveTab(tab)" [active]="activeTab()?.key === tab.key" [disabled]="tab.disabled"> {{ tab.value }} </a>
+  @for (tab of tabs(); track tab.key; let index = $index) {
+    <a mat-tab-link (click)="changeActiveTab(tab)" [active]="activeTab()?.key === tab.key" [disabled]="tab.disabled" [tabindex]="index"> {{ tab.value }} </a>
   }
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

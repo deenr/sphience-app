@@ -1,7 +1,10 @@
 <div class="avatar-group flex-row">
-  @for (imageSrc of imagesSrc(); track $index) {
+  @for (document of $visibleDocuments(); track $index) {
     <div class="avatar">
-      <app-avatar [size]="avatarSize" [imageSrc]="imageSrc"></app-avatar>
+      <app-avatar [size]="avatarSize" [document]="document"></app-avatar>
     </div>
+  }
+  @if ($hasMoreImages()) {
+    <div class="extra {{ size().toLowerCase() }}">+{{ documents().length - $visibleDocuments().length }}</div>
   }
 </div>

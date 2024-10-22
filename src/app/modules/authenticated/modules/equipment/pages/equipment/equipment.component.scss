@@ -52,4 +52,26 @@
       }
     }
   }
+
+  ::ng-deep {
+    .cdk-column-image {
+      flex: calc(72px + 24px) 0 0;
+      padding-right: 0 !important;
+    }
+
+    .cdk-column-name {
+      min-width: calc(216px + 24px + 24px);
+      flex: 2;
+    }
+
+    .cdk-column-available {
+      min-width: calc(216px + 24px + 24px);
+      flex: 1;
+    }
+
+    .cdk-column-documents {
+      min-width: calc(232px + 24px + 24px);
+      flex: 1;
+    }
+  }
 }
