@@ -18,6 +18,7 @@
 
         img {
           width: 50%;
+          object-fit: cover;
         }
 
         .image__placeholder {
@@ -35,14 +36,34 @@
         }
       }
 
-      .more {
+      .more,
+      .previous,
+      .next {
         position: absolute;
-        top: 0;
-        right: 0;
         width: 44px;
         height: 44px;
         padding: 12px;
         color: sphience.$color-grey-400;
+
+        &:hover {
+          color: sphience.$color-grey-700;
+        }
+      }
+
+      .more {
+        top: 0;
+        right: 0;
+      }
+
+      .previous,
+      .next {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .next {
+        height: 100%;
+        right: 0;
       }
     }
 

@@ -1,39 +1,42 @@
 <article class="device-card flex-column">
   <div class="device-card__image">
     <figure class="flex-row full-width full-height">
-      @if (data().imageSrc) {
-        <img class="full-height" src="{{ data().imageSrc }}" alt="Image of {{ data().name }}" />
+      @if (data().image) {
+        <img class="full-height" src="{{ data().image }}" alt="Image of {{ data().title }}" />
       } @else {
         <div class="image__placeholder full-height flex-row">
           <mat-icon svgIcon="image"></mat-icon>
         </div>
       }
     </figure>
-    <!-- <mat-icon class="more" svgIcon="dots-vertical"></mat-icon> -->
+    <mat-icon class="previous cursor-pointer" svgIcon="chevron-left" (click)="toggle()"></mat-icon>
+    <mat-icon class="next cursor-pointer" svgIcon="chevron-right" (click)="toggle()"></mat-icon>
+    <mat-icon class="more cursor-pointer" svgIcon="dots-vertical"></mat-icon>
   </div>
   <div class="device-card__info">
-    <h2 class="text-md text-semibold">{{ data().name }}</h2>
-    @switch (true) {
-      @case (isAvailableMicroscope(data())) {
-        <app-badge [color]="Color.SUCCESS" [size]="BadgeSize.SM">Available</app-badge>
-        <p class="text-sm text-medium">Available till {{ availableData().availableUntil | date }}</p>
+    <h2 class="text-md text-semibold">{{ data().title }}</h2>
+    @switch ($currentCardView()) {
+      @case ('availability') {
+        @if (data().available) {
+          <app-badge [color]="Color.SUCCESS" [size]="BadgeSize.SM">Available</app-badge>
+          <p class="text-sm text-medium">Available till {{ data().availableDate | date }}</p>
+        } @else {
+          <app-badge [color]="Color.ERROR" [size]="BadgeSize.SM">Unavailable</app-badge>
+          <p class="text-sm text-medium">Available from {{ data().availableDate | date }}</p>
+        }
       }
-      @case (isUnavailableMicroscope(data())) {
-        <app-badge [color]="Color.ERROR" [size]="BadgeSize.SM">Unavailable</app-badge>
-        <p class="text-sm text-medium">Available from {{ unavailableData().availableFrom | date }}</p>
+      @case ('documents') {
+        <app-avatar-group [size]="AvatarGroupSize.XS" [documents]="data().documents" [maxItems]="6"></app-avatar-group>
+        <p class="text-sm text-medium">{{ data().documents.length }} documents</p>
       }
-      @case (isPickupMicroscope(data())) {
+      <!-- @case (isPickupMicroscope(data())) {
         <app-badge [color]="Color.PURPLE" [size]="BadgeSize.SM">Pickup in {{ daysTillPickup }} days</app-badge>
         <p class="text-sm text-medium">Reservation on {{ pickupData().reservationDate | date }}</p>
       }
       @case (isReturnMicroscope(data())) {
         <app-badge [color]="Color.ORANGE" [size]="BadgeSize.SM">Return in {{ daysTillDropoff }} days</app-badge>
         <p class="text-sm text-medium">Reservation ends on {{ returnData().reservationEndDate | date }}</p>
-      }
-      @case (isDocumentsMicroscope(data())) {
-        <app-avatar-group [size]="AvatarGroupSize.XS" [imagesSrc]="documentsData().users"></app-avatar-group>
-        <p class="text-sm text-medium">{{ documentsData().documentCount }} documents</p>
-      }
+      } -->
     }
   </div>
 </article>
