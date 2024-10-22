@@ -35,16 +35,16 @@
               </div>
             }
             @case (tableColumnDataType.BADGE) {
-              @let value = row | nestedValue: column;
-              @if (value) {
+              @let value = getBadgeValue(column, row);
+              @if (value !== undefined) {
                 <app-badge [color]="getBadgeColor(column, row)" [size]="getBadgeSize(column)" [type]="getBadgeType(column)">{{ value }}</app-badge>
               }
             }
             @case (tableColumnDataType.AVATAR_GROUP) {
               @let documents = row | nestedValue: column;
-              @if (documents) {
-                <p class="document-count">{{ documents?.length }} documents</p>
-                <app-avatar-group [imagesSrc]="documents" [size]="AvatarGroupSize.XS"></app-avatar-group>
+              @if (documents.length > 0) {
+                <p class="document-count">{{ documents.length }} documents</p>
+                <app-avatar-group [documents]="documents" [size]="AvatarGroupSize.XS" [maxItems]="6"></app-avatar-group>
               }
             }
             @case (tableColumnDataType.IMAGE) {

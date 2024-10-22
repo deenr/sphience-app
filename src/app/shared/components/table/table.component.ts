@@ -1,4 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, EventEmitter, input, Output, Signal, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -42,7 +43,7 @@ export class TableComponent<T> {
   public selectionModel = new SelectionModel<T>(true, []);
   public tableColumnDataType = TableColumnDataType;
 
-  private differ: any;
+  public constructor(private readonly datePipe: DatePipe) {}
 
   public isAllSelected(): boolean {
     const numSelected = this.selectionModel.selected.length;
@@ -115,6 +116,23 @@ export class TableComponent<T> {
     }
 
     return color ?? Color.GREY;
+  }
+
+  public getBadgeValue(column: TableColumn, row: T): string | undefined {
+    const badgeProperties = column.badgeProperties;
+    if (badgeProperties) {
+      const { valueMap, key } = badgeProperties;
+      if (valueMap && key) {
+        return valueMap.get(getNestedValue(key, row))?.replace(/%\((.*?)\)/g, (_: string, placeholder: string) => {
+          const value = getNestedValue(placeholder, row);
+          return typeof value === 'object' ? this.datePipe.transform(value) : value;
+        });
+      } else if (key) {
+        return getNestedValue(key, row);
+      }
+    }
+
+    return '';
   }
 
   public getTitle(column: TableColumn, row: T): string {

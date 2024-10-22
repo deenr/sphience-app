@@ -1,12 +1,12 @@
-import { fireEvent, render, screen } from '@testing-library/angular';
-import { TableComponent } from './table.component';
-import { TableModule } from './table.module';
-import { TableColumnBuilder } from './builder/table-column-builder';
-import { TableColumn } from './builder/table-column';
-import { TableColumnDataType } from './table-column-data-type.enum';
 import { MatIconTestingModule } from '@angular/material/icon/testing';
 import { StubPersonFactory } from '@core/controllers/people/stub-person-factory';
 import { TranslateModule } from '@ngx-translate/core';
+import { fireEvent, render, screen } from '@testing-library/angular';
+import { TableColumn } from './builder/table-column';
+import { TableColumnBuilder } from './builder/table-column-builder';
+import { TableColumnDataType } from './table-column-data-type.enum';
+import { TableComponent } from './table.component';
+import { TableModule } from './table.module';
 
 describe('TableComponent', () => {
   const data = StubPersonFactory.getRandomPersons().map((person) => ({ ...person, flag: true, hidden: false }));

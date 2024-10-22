@@ -60,11 +60,12 @@
     .cdk-table {
       position: relative;
       border-spacing: 0;
+      overflow-x: scroll;
 
       .cdk-header-row {
         position: sticky;
         z-index: 999;
-        top: 62px;
+        // top: 62px;
         min-height: unset;
         height: 44px;
 

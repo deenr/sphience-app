@@ -6,6 +6,7 @@ export interface BadgeProperty {
   colors: Map<any, Color>;
   type: BadgeType;
   key?: string;
+  valueMap?: Map<any, string>;
 }
 
 export class BadgeBuilder {
@@ -34,6 +35,11 @@ export class BadgeBuilder {
 
   public setKey(key: string): this {
     this.columnBuilder.badgeProperties!.key = key;
+    return this;
+  }
+
+  public setValueMap(valueMap: Map<any, string>): this {
+    this.columnBuilder.badgeProperties!.valueMap = valueMap;
     return this;
   }
 
