@@ -1,0 +1,10 @@
+:host {
+  .datepicker.active {
+    border-radius: 8px 0 0 8px !important;
+  }
+
+  .clear {
+    border-radius: 0 8px 8px 0 !important;
+    border-left: 0 !important;
+  }
+}

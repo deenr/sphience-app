@@ -1,32 +1,22 @@
-import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-
-export interface DateRange {
-  startDate: Date;
-  endDate: Date;
-}
+import { Component, effect, input, output, signal, WritableSignal } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'app-datepicker-menu',
   templateUrl: 'datepicker-menu.component.html',
-  styleUrls: ['datepicker-menu.component.scss'],
-  imports: [MatIconModule, MatFormFieldModule, DatePipe, MatInputModule]
+  styleUrls: ['datepicker-menu.component.scss']
 })
 export class DatepickerMenuComponent {
-  public date = input.required<Date | DateRange>();
-  @Input() public actions = false;
-  @Input() public unavailableDates: Date[] = [];
-  @Output() public dateChange = new EventEmitter<Date | DateRange>();
+  public dateRange = input.required<[Date, Date] | [null, null]>();
+  public withActions = input(false);
+  public unavailableDates = input<Date[]>([]);
+
+  public dateRangeChange = output<[Date, Date]>();
+  public cancel = output<void>();
 
   public currentDateInView: Date;
 
-  public selectedSingleDate: Date | null = null;
-  public selectedStartDate: Date | null = null;
-  public selectedEndDate: Date | null = null;
+  public $selectedStartDate: WritableSignal<Date | null> = signal(null);
+  public $selectedEndDate: WritableSignal<Date | null> = signal(null);
 
   public calendarDates: Date[] = [];
   public currentMonth: string;
@@ -37,6 +27,15 @@ export class DatepickerMenuComponent {
     this.currentDateInView = today;
     this.currentMonth = this.getMonthYearString(this.currentDateInView);
     this.generateCalendarDates(this.currentDateInView);
+
+    effect(
+      () => {
+        const [startDate, endDate] = this.dateRange();
+        this.$selectedStartDate.set(startDate);
+        this.$selectedEndDate.set(endDate);
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   public changeToToday(): void {
@@ -69,27 +68,19 @@ export class DatepickerMenuComponent {
       return;
     }
 
-    if (this.date instanceof Date) {
-      this.selectedSingleDate = date;
-      this.dateChange.emit(this.selectedSingleDate);
-    } else {
-      if (!this.selectedStartDate) {
-        this.selectedStartDate = date;
-      } else if (!this.selectedEndDate) {
-        if (this.isDateBefore(date, this.selectedStartDate)) {
-          this.selectedEndDate = this.selectedStartDate;
-          this.selectedStartDate = date;
-        } else {
-          this.selectedEndDate = date;
-        }
-      } else if (this.selectedStartDate && this.selectedEndDate) {
-        this.selectedStartDate = date;
-        this.selectedEndDate = null;
+    if (!this.$selectedStartDate()) {
+      this.$selectedStartDate.set(date);
+    } else if (!this.$selectedEndDate()) {
+      const startDate = this.$selectedStartDate();
+      if (startDate && this.isDateBefore(date, startDate)) {
+        this.$selectedEndDate.set(this.$selectedStartDate());
+        this.$selectedStartDate.set(date);
+      } else {
+        this.$selectedEndDate.set(date);
       }
-
-      if (this.selectedStartDate && this.selectedEndDate) {
-        this.dateChange.emit({ startDate: this.selectedStartDate, endDate: this.selectedEndDate });
-      }
+    } else if (this.$selectedStartDate() && this.$selectedEndDate()) {
+      this.$selectedStartDate.set(date);
+      this.$selectedEndDate.set(null);
     }
   }
 
@@ -100,8 +91,10 @@ export class DatepickerMenuComponent {
   }
 
   public isDateInRange(date: Date): boolean {
-    if (this.selectedStartDate && this.selectedEndDate) {
-      return date.getTime() > this.selectedStartDate?.getTime() && date.getTime() <= this.selectedEndDate?.getTime();
+    const startDate = this.$selectedStartDate();
+    const endDate = this.$selectedEndDate();
+    if (startDate && endDate) {
+      return date.getTime() > startDate?.getTime() && date.getTime() <= endDate?.getTime();
     }
     return false;
   }
@@ -143,13 +136,13 @@ export class DatepickerMenuComponent {
   }
 
   public isDateUnavailable(date: Date): boolean {
-    return this.unavailableDates?.some((unavailableDate: Date) => this.isDateEqual(unavailableDate, date));
+    return this.unavailableDates()?.some((unavailableDate: Date) => this.isDateEqual(unavailableDate, date));
   }
 
   public isDateRangeUnavailable(date: Date): boolean {
-    return this.unavailableDates.some((unavailableDate: Date, index: number) => {
-      const dayBefore = this.unavailableDates[index - 1];
-      const dayAfter = this.unavailableDates[index + 1];
+    return this.unavailableDates().some((unavailableDate: Date, index: number) => {
+      const dayBefore = this.unavailableDates()[index - 1];
+      const dayAfter = this.unavailableDates()[index + 1];
 
       const hasRange = (dayBefore && dayBefore.getDate() === unavailableDate.getDate() - 1) || (dayAfter && dayAfter.getDate() === unavailableDate.getDate() + 1);
 
@@ -157,8 +150,8 @@ export class DatepickerMenuComponent {
         return false;
       }
 
-      const firstDayInRange = this.findFirstDateOfRange(date, this.unavailableDates);
-      const lastDayInRange = this.findLastDateOfRange(date, this.unavailableDates);
+      const firstDayInRange = this.findFirstDateOfRange(date, this.unavailableDates());
+      const lastDayInRange = this.findLastDateOfRange(date, this.unavailableDates());
 
       if (firstDayInRange && this.isDateEqual(firstDayInRange, date)) {
         return firstDayInRange.getHours() > 0;
@@ -168,6 +161,14 @@ export class DatepickerMenuComponent {
 
       return true;
     });
+  }
+
+  public apply(): void {
+    const startDate = this.$selectedStartDate();
+    const endDate = this.$selectedEndDate();
+    if (startDate && endDate) {
+      this.dateRangeChange.emit([startDate, endDate]);
+    }
   }
 
   private findFirstDateOfRange(targetDate: Date, dateRange: Date[]): Date {

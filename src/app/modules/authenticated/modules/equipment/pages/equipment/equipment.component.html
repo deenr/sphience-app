@@ -19,12 +19,7 @@
     </mat-form-field>
     <div class="filter__input--right flex-row full-width">
       <div class="filter__input--dates">
-        <button mat-stroked-button [class.active]="selectedDates" [matMenuTriggerFor]="datepicker">
-          <mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">{{ selectDateButtonText }}</span>
-        </button>
-        @if (selectedDates) {
-          <button class="icon-only" mat-stroked-button (click)="clearDates()"><mat-icon svgIcon="close"></mat-icon></button>
-        }
+        <app-datepicker-button (dateRangeChange)="onDateChange($event)"></app-datepicker-button>
       </div>
       <mat-button-toggle-group [value]="$equipmentView()" (valueChange)="onViewChange($event)">
         <mat-button-toggle value="grid"><mat-icon svgIcon="grid"></mat-icon>Grid view</mat-button-toggle>
@@ -38,7 +33,3 @@
     <app-equipment-grid class="full-height min-height-0" [data]="data"></app-equipment-grid>
   }
 </div>
-
-<mat-menu #datepicker="matMenu">
-  <!-- <app-datepicker-menu [date]="selectedDates" (dateChange)="onDateChange($event)" (click)="$event.stopPropagation()"></app-datepicker-menu> -->
-</mat-menu>

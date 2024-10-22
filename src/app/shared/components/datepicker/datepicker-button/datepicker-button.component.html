@@ -1,0 +1,17 @@
+@let dateRange = $dateRange();
+<button class="datepicker" #datepickerTrigger="matMenuTrigger" mat-stroked-button [class.active]="$hasValidDateRange()" [matMenuTriggerFor]="datepicker">
+  <mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">{{ $buttonText() }}</span>
+</button>
+@if ($hasValidDateRange()) {
+  <button class="clear icon-only" mat-stroked-button (click)="clearDates()"><mat-icon svgIcon="close"></mat-icon></button>
+}
+
+<mat-menu #datepicker="matMenu">
+  <app-datepicker-menu
+    [dateRange]="dateRange"
+    [withActions]="true"
+    (dateRangeChange)="onDateChange($event); datepickerTrigger.closeMenu()"
+    (cancel)="datepickerTrigger.closeMenu()"
+    (click)="$event.stopPropagation()"
+  ></app-datepicker-menu>
+</mat-menu>
