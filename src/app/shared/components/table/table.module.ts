@@ -9,12 +9,27 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { AvatarGroupComponent } from '../avatar-group/avatar-group.component';
+import { BadgeComponent } from '../badge/badge.component';
 import { NestedValuePipe } from './pipes/nested-value.pipe';
 import { TableOverlayComponent } from './table-overlay/table-overlay.component';
 import { TableComponent } from './table.component';
 
 @NgModule({
-  imports: [CommonModule, MatPaginatorModule, MatTableModule, MatCheckboxModule, MatIconModule, MatChipsModule, MatProgressBarModule, MatTooltipModule, MatMenuModule, TranslateModule],
+  imports: [
+    CommonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatChipsModule,
+    MatProgressBarModule,
+    MatTooltipModule,
+    MatMenuModule,
+    TranslateModule,
+    BadgeComponent,
+    AvatarGroupComponent
+  ],
   declarations: [TableComponent, NestedValuePipe, TableOverlayComponent],
   exports: [TableComponent]
 })

@@ -22,6 +22,37 @@
       background-color: sphience.$color-white;
     }
 
+    .title-and-description {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      h4,
+      p {
+        margin: 0;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      h4 {
+        @include sphience.text-sm();
+        @include sphience.text-medium();
+        color: sphience.$color-grey-900;
+      }
+
+      p {
+        @include sphience.text-sm();
+        @include sphience.text-regular();
+        color: sphience.$color-grey-500;
+      }
+    }
+
+    .document-count {
+      text-wrap: nowrap;
+      margin-right: 12px;
+    }
+
     &:not(:has(h3)) .cdk-table .cdk-header-row {
       top: 0 !important;
     }

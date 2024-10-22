@@ -18,9 +18,7 @@
       <input matInput placeholder="Search for device" formControlName="name" />
     </mat-form-field>
     <div class="filter__input--right flex-row full-width">
-      <div class="filter__input--dates">
-        <app-datepicker-button (dateRangeChange)="onDateChange($event)"></app-datepicker-button>
-      </div>
+      <app-datepicker-button (dateRangeChange)="onDateChange($event)"></app-datepicker-button>
       <mat-button-toggle-group [value]="$equipmentView()" (valueChange)="onViewChange($event)">
         <mat-button-toggle value="grid"><mat-icon svgIcon="grid"></mat-icon>Grid view</mat-button-toggle>
         <mat-button-toggle value="list"><mat-icon svgIcon="list"></mat-icon>List view</mat-button-toggle>

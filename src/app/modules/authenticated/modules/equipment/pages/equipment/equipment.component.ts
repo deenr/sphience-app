@@ -2,7 +2,9 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '@core/services/local-storage.service';
-import { TableColumnBuilder } from '@shared/components/table/builder/table-column-builder';
+import { BadgeType, Color } from '@shared/components/badge/badge.component';
+import { BadgeBuilder } from '@shared/components/table/builder/badge-builder';
+import { TableColumnBuilder, TableColumnDataType } from '@shared/components/table/builder/table-column-builder';
 import { TabsItem } from '@shared/components/tabs/tabs-item.interface';
 
 export type EquipmentTabKey = 'all' | 'available' | 'favourites';
@@ -39,15 +41,34 @@ export class EquipmentComponent {
   });
 
   public data = [
-    { id: 1, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] },
-    { id: 2, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] },
-    { id: 2, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] },
-    { id: 3, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] },
-    { id: 4, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] },
-    { id: 5, name: 'hello', imageSrc: '', documentCount: 12, users: ['', '', ''] }
+    { id: 1, title: 'Microscope', description: 'This is a microscope', imageSrc: '', documents: ['', '', '', '', '', '', '', '', '', '', '', ''], users: ['', '', ''] },
+    { id: 2, title: 'Microscope', description: 'This is a microscope', test: 'Available', imageSrc: '', availableUntil: new Date(), available: true },
+    { id: 2, title: 'Microscope', description: 'This is a microscope', test: 'Not available', imageSrc: '', availableFrom: new Date(), available: false },
+    { id: 3, title: 'Microscope', description: 'This is a microscope', imageSrc: '', documents: ['', '', '', '', '', '', '', '', '', '', '', ''], users: ['', '', ''] },
+    { id: 4, title: 'Microscope', description: 'This is a microscope', imageSrc: '', documents: ['', '', '', '', '', '', '', '', '', '', '', ''], users: ['', '', ''] },
+    { id: 5, title: 'Microscope', description: 'This is a microscope', imageSrc: '', documents: ['', '', '', '', '', '', '', '', '', '', '', ''], users: ['', '', ''] }
   ];
 
-  public columns = [new TableColumnBuilder().setField('name').setHeaderName('Device name').build()];
+  public columns = [
+    new TableColumnBuilder().setField('name').setDataType(TableColumnDataType.TITLE_AND_DESCRIPTION).setTitleAndDescription('title', 'description').setHeaderName('Device name').build(),
+    new TableColumnBuilder()
+      .setDataType(TableColumnDataType.BADGE)
+      .setHeaderName('Availablity')
+      .setField('test')
+      .setBadge((badgeBuilder: BadgeBuilder) => {
+        badgeBuilder
+          .setKey('available')
+          .setType(BadgeType.DOT)
+          .setColors(
+            new Map([
+              [true, Color.SUCCESS],
+              [false, Color.ERROR]
+            ])
+          );
+      })
+      .build(),
+    new TableColumnBuilder().setField('documents').setDataType(TableColumnDataType.AVATAR_GROUP).setHeaderName('Documents').build()
+  ];
 
   private readonly EQUIPMENT_VIEW_KEY = 'EQUIPMENT_VIEW';
 

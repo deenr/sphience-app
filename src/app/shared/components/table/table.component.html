@@ -28,6 +28,25 @@
             @case (tableColumnDataType.TEXT) {
               {{ row | nestedValue: column }}
             }
+            @case (tableColumnDataType.TITLE_AND_DESCRIPTION) {
+              <div class="title-and-description full-width">
+                <h4>{{ getTitle(column, row) }}</h4>
+                <p>{{ getDescription(column, row) }}</p>
+              </div>
+            }
+            @case (tableColumnDataType.BADGE) {
+              @let value = row | nestedValue: column;
+              @if (value) {
+                <app-badge [color]="getBadgeColor(column, row)" [size]="getBadgeSize(column)" [type]="getBadgeType(column)">{{ value }}</app-badge>
+              }
+            }
+            @case (tableColumnDataType.AVATAR_GROUP) {
+              @let documents = row | nestedValue: column;
+              @if (documents) {
+                <p class="document-count">{{ documents?.length }} documents</p>
+                <app-avatar-group [imagesSrc]="documents" [size]="AvatarGroupSize.XS"></app-avatar-group>
+              }
+            }
             @case (tableColumnDataType.EDIT) {
               <mat-icon data-testid="table-edit-icon" class="action-icon" svgIcon="pencil" (click)="onCellEdit($event, row)"></mat-icon>
             }

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { getNestedValue } from '@shared/utils/object.utils';
-import { TableColumn } from '../builder/table-column';
+import { TableColumn } from '../builder/table-column-builder';
 
 @Pipe({
   name: 'nestedValue'
 })
 export class NestedValuePipe implements PipeTransform {
-  public transform(data: any, column: TableColumn): string {
+  public transform(data: any, column: TableColumn): any {
     if (!data) {
       return '';
     }

@@ -4,9 +4,10 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { TranslateService } from '@ngx-translate/core';
 import { getNestedValue } from '@shared/utils/object.utils';
-import { TableColumn } from './builder/table-column';
+import { AvatarGroupSize } from '../avatar-group/avatar-group.component';
+import { BadgeSize, BadgeType, Color } from '../badge/badge.component';
+import { TableColumn, TableColumnDataType } from './builder/table-column-builder';
 import { MatPaginatorIntlService } from './mat-paginator-intl.service';
-import { TableColumnDataType } from './table-column-data-type.enum';
 
 @Component({
   selector: 'app-table',
@@ -29,6 +30,8 @@ export class TableComponent<T> {
   @Output() public edit = new EventEmitter<T>();
   @Output() public delete = new EventEmitter<T>();
 
+  public AvatarGroupSize = AvatarGroupSize;
+
   public displayedColumns = computed(() => this.columns().map((column: TableColumn) => column.field));
   public dataSource: Signal<MatTableDataSource<T>> = computed(() => {
     const dataSource = new MatTableDataSource(this.data());
@@ -40,8 +43,6 @@ export class TableComponent<T> {
   public tableColumnDataType = TableColumnDataType;
 
   private differ: any;
-
-  public constructor(private readonly translateService: TranslateService) {}
 
   public isAllSelected(): boolean {
     const numSelected = this.selectionModel.selected.length;
@@ -82,5 +83,47 @@ export class TableComponent<T> {
   public getArray(data: T | T[], badgePropertiesKey: string): any[] {
     const nestedData = getNestedValue(badgePropertiesKey, data);
     return Array.isArray(nestedData) ? nestedData : [nestedData];
+  }
+
+  public getBadgeType(column: TableColumn): BadgeType {
+    const badgeProperties = column.badgeProperties;
+    if (badgeProperties) {
+      const { type } = badgeProperties;
+      return type;
+    }
+
+    return BadgeType.NONE;
+  }
+
+  public getBadgeSize(column: TableColumn): BadgeSize {
+    const badgeProperties = column.badgeProperties;
+    if (badgeProperties) {
+      const { size } = badgeProperties;
+      return size;
+    }
+
+    return BadgeSize.MD;
+  }
+
+  public getBadgeColor(column: TableColumn, row: T): Color {
+    let color = null;
+
+    const badgeProperties = column.badgeProperties;
+    if (badgeProperties) {
+      const { colors, key } = badgeProperties;
+      if (colors && key) color = colors.get(getNestedValue(key, row));
+    }
+
+    return color ?? Color.GREY;
+  }
+
+  public getTitle(column: TableColumn, row: T): string {
+    const titleKey = column.titleKey!;
+    return getNestedValue(titleKey, row);
+  }
+
+  public getDescription(column: TableColumn, row: T): string {
+    const descriptionKey = column.descriptionKey!;
+    return getNestedValue(descriptionKey, row);
   }
 }

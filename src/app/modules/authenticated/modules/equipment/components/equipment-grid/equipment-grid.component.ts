@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { MicroscopeData } from '@shared/components/device-card/device-card.component';
 
 @Component({
   selector: 'app-equipment-grid',
@@ -7,5 +6,5 @@ import { MicroscopeData } from '@shared/components/device-card/device-card.compo
   styleUrls: ['./equipment-grid.component.scss']
 })
 export class EquipmentGridComponent {
-  public data = input.required<MicroscopeData[]>();
+  public data = input.required<any[]>();
 }
