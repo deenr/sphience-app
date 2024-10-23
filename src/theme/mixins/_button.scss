@@ -349,6 +349,7 @@
   }
 
   .mat-button-toggle-group {
+    width: fit-content;
     border-radius: 8px;
     border: 1px solid colors.$color-grey-300;
     background-color: colors.$color-white;

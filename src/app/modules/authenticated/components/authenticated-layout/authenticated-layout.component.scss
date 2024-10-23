@@ -8,24 +8,30 @@
 
   .mat-drawer-container {
     width: 100%;
-    height: 100%;
+
+    @include sphience.breakpoint-md() {
+      height: 100%;
+    }
 
     .mat-drawer-side {
       border: unset;
     }
 
     .mat-drawer-over {
+      max-height: 100vh;
       width: 100%;
     }
 
     .mat-drawer-content {
-      height: 100%;
+      // height: 100%;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: scroll;
       background-color: sphience.$color-grey-25;
 
       @include sphience.breakpoint-md() {
+        overflow: hidden;
         flex-direction: row;
       }
 

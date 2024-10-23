@@ -1,5 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, output, signal, WritableSignal } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BreakpointService } from '@core/services/breakpoint.service';
+import { take } from 'rxjs';
+import { DatepickerDialogComponent } from '../datepicker-dialog/datepicker-dialog.component';
 
 @Component({
   selector: 'app-datepicker-button',
@@ -23,7 +27,13 @@ export class DatepickerButtonComponent {
     return 'Select dates';
   });
 
-  public constructor(private readonly datePipe: DatePipe) {}
+  public isDesktop$ = this.breakpointService.isDesktop$;
+
+  public constructor(
+    private readonly datePipe: DatePipe,
+    private readonly breakpointService: BreakpointService,
+    private readonly dialog: MatDialog
+  ) {}
 
   public onDateChange(dates: [Date, Date]): void {
     this.$dateRange.set(dates);
@@ -33,5 +43,22 @@ export class DatepickerButtonComponent {
   public clearDates(): void {
     this.$dateRange.set([null, null]);
     this.dateRangeChange.emit([null, null]);
+  }
+
+  public openDatepickerDialog(): void {
+    this.dialog
+      .open<DatepickerDialogComponent>(DatepickerDialogComponent, {
+        maxWidth: 'calc(100vw - 32px)',
+        hasBackdrop: true,
+        data: {
+          dateRange: this.$dateRange(),
+          withActions: true
+        }
+      })
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((dates: [Date, Date]) => {
+        if (dates) this.onDateChange(dates);
+      });
   }
 }

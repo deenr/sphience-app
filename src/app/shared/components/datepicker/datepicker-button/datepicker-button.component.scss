@@ -1,8 +1,15 @@
+@use 'sphience';
+
 :host {
   display: flex;
   flex-wrap: nowrap;
-  .datepicker.active {
-    border-radius: 8px 0 0 8px !important;
+
+  .datepicker {
+    border: 1px solid sphience.$color-grey-300 !important;
+
+    &.active {
+      border-radius: 8px 0 0 8px !important;
+    }
   }
 
   .clear {

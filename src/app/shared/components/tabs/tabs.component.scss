@@ -28,10 +28,6 @@
       height: unset;
       padding: 0 4px 18px 4px;
 
-      &.cdk-focused {
-        background-color: aqua;
-      }
-
       ::ng-deep {
         .mdc-tab-indicator__content--underline {
           border-color: sphience.$color-primary-700 !important;

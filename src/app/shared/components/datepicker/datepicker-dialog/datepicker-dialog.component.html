@@ -45,14 +45,14 @@
             <div [class.in-range]="isDateInRange(date)" [class.saturday]="isDateInRangeAndSaturday(date)" [class.sunday]="isDateInRangeAndSunday(date)"></div>
           }
         </div>
-        @if (unavailableDates().length > 0) {
+        @if ($unavailableDates().length > 0) {
           <div class="calendar__unavailable-range full-width">
             @for (date of getRangeDates(); track $index) {
               <div [class.unavailable]="isDateRangeUnavailable(date)"></div>
             }
           </div>
         }
-        @if (unavailableDates().length > 0) {
+        @if ($unavailableDates().length > 0) {
           <div class="calendar__unavailable-days full-width">
             @for (date of calendarDates; track $index) {
               <div [class.unavailable]="isDateRangeUnavailable(date)"></div>
@@ -63,9 +63,9 @@
       </div>
     </div>
   </div>
-  @if (withActions()) {
+  @if ($withActions()) {
     <footer class="datepicker__actions flex-row">
-      <button mat-stroked-button class="md full-width" (click)="cancel.emit()">Cancel</button>
+      <button mat-stroked-button class="md full-width" (click)="dialogRef.close()">Cancel</button>
       <button mat-flat-button class="md full-width" color="primary" (click)="apply()" [disabled]="!$selectedStartDate() || !$selectedEndDate()">Apply</button>
     </footer>
   }

@@ -1,0 +1,220 @@
+@use 'sphience';
+
+:host {
+  .datepicker {
+    max-width: 354px;
+    width: 100%;
+    // border-radius: 8px;
+    // border: 1px solid sphience.$color-grey-200;
+    // background-color: sphience.$color-white;
+
+    &__content {
+      padding: 20px 24px;
+      gap: 12px;
+
+      .content__month {
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+          color: sphience.$color-grey-700;
+          text-align: center;
+        }
+
+        .mat-icon {
+          width: 36px;
+          height: 36px;
+          padding: 8px;
+          color: sphience.$color-grey-500;
+          cursor: pointer;
+        }
+      }
+
+      .content__actions {
+        gap: 12px;
+        align-items: center;
+
+        &.multi-select {
+          gap: 8px;
+
+          span {
+            color: sphience.$color-grey-500;
+          }
+        }
+
+        ::ng-deep .mat-mdc-form-field {
+          pointer-events: none;
+
+          .mat-mdc-form-field-infix {
+            min-height: 40px;
+            height: 40px;
+          }
+        }
+      }
+
+      .content__dates {
+        .date {
+          position: relative;
+          cursor: pointer;
+          display: flex;
+          max-width: 40px;
+          width: 100%;
+          height: 40px;
+          // padding: 10px 8px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 20px;
+
+          &:not(.in-current-month) span {
+            color: sphience.$color-grey-500;
+          }
+
+          &.today {
+            &.unavailable {
+              box-shadow: inset 0px 0px 0px 2px sphience.$color-error-100;
+            }
+            &:not(.in-range):not(.selected):not(.unavailable) {
+              box-shadow: inset 0px 0px 0px 2px sphience.$color-grey-100;
+            }
+
+            &:hover {
+              border: none;
+            }
+          }
+
+          &.selected {
+            background-color: sphience.$color-primary-600;
+
+            span {
+              color: sphience.$color-white;
+              font-weight: sphience.$fw-500;
+            }
+          }
+
+          &.in-range {
+            span {
+              font-weight: sphience.$fw-500;
+            }
+          }
+
+          &.unavailable {
+            cursor: not-allowed;
+
+            span {
+              color: sphience.$color-error-400;
+            }
+          }
+
+          &.unavailable-date {
+            background-color: sphience.$color-error-50;
+          }
+
+          &:hover {
+            &.selected:not(.unavailable) {
+              background-color: sphience.$color-primary-700;
+            }
+
+            &.in-range:not(.selected):not(.unavailable) {
+              background-color: sphience.$color-grey-100;
+            }
+
+            &:not(.selected):not(.in-range):not(.unavailable) {
+              background-color: sphience.$color-grey-50;
+            }
+          }
+        }
+
+        .dates__weekdays {
+          color: sphience.$color-grey-700;
+          gap: 4px;
+        }
+
+        .calendar {
+          position: relative;
+
+          &__days,
+          &__range,
+          &__unavailable-days,
+          &__unavailable-range {
+            row-gap: 4px;
+          }
+
+          &__range,
+          &__unavailable-days,
+          &__unavailable-range {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+
+          &__days {
+            position: relative;
+            z-index: 1;
+          }
+
+          &__days,
+          &__unavailable-days {
+            display: grid;
+            grid-template-columns: repeat(7, auto);
+            column-gap: 4px;
+            color: sphience.$color-grey-700;
+          }
+
+          &__range,
+          &__unavailable-range {
+            display: grid;
+            grid-template-columns: repeat(14, 1fr);
+          }
+
+          &__unavailable-range {
+            .unavailable {
+              background-color: sphience.$color-error-50;
+            }
+          }
+
+          &__range {
+            .in-range {
+              background-color: sphience.$color-grey-50;
+            }
+
+            .saturday {
+              border-top-right-radius: 20px;
+              border-bottom-right-radius: 20px;
+            }
+
+            .sunday {
+              border-top-left-radius: 20px;
+              border-bottom-left-radius: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    &__actions {
+      padding: 16px;
+      gap: 12px;
+      border-top: 1px solid sphience.$color-grey-200;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-dialog-surface:has(app-datepicker-dialog) {
+    max-width: none !important;
+
+    border-radius: 8px !important;
+    border: 1px solid sphience.$color-grey-200 !important;
+    background-color: sphience.$color-white !important ;
+
+    .mat-mdc-menu-content {
+      padding: 0 !important;
+    }
+  }
+
+  .mdc-line-ripple {
+    display: none;
+  }
+}

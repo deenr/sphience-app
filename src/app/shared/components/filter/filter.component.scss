@@ -1,0 +1,28 @@
+@use 'sphience';
+
+.filter {
+  gap: 16px;
+
+  &__main {
+    min-width: unset;
+
+    @include sphience.breakpoint-xs {
+      min-width: 256px;
+    }
+  }
+
+  &__other {
+    gap: 16px;
+    justify-content: end;
+  }
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  max-width: fit-content;
+
+  .mat-mdc-menu-content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
+  }
+}

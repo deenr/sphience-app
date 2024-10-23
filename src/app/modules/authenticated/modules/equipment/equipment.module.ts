@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ActionButtonsComponent } from '@shared/components/action-buttons/action-buttons.component';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { DeviceCardComponent } from '@shared/components/device-card/device-card.component';
+import { FilterComponent } from '@shared/components/filter/filter.component';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { TableModule } from '@shared/components/table/table.module';
 import { TabsComponent } from '@shared/components/tabs/tabs.component';
@@ -36,7 +37,8 @@ import { EquipmentComponent } from './pages/equipment/equipment.component';
     ReactiveFormsModule,
     DeviceCardComponent,
     ActionButtonsComponent,
-    DatepickerModule
+    DatepickerModule,
+    FilterComponent
   ]
 })
 export class EquipmentModule {}

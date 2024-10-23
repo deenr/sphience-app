@@ -1,0 +1,17 @@
+<section #filterContainer class="filter full-width flex-row">
+  <div #mainFilter class="filter__main full-width">
+    <ng-content select="[main]"></ng-content>
+  </div>
+  @if ($showOtherFiltersInline()) {
+    <div #otherFilters class="filter__other full-width flex-row">
+      <ng-container [ngTemplateOutlet]="others"></ng-container>
+    </div>
+  } @else {
+    <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="othersMenu"><mat-icon svgIcon="filter-lines"></mat-icon></button>
+    <mat-menu #othersMenu="matMenu" class="extra-actions">
+      <ng-container [ngTemplateOutlet]="others"></ng-container>
+    </mat-menu>
+  }
+</section>
+
+<ng-template #others><ng-content select="[other]"></ng-content></ng-template>
