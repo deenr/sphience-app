@@ -1,6 +1,8 @@
 @use 'sphience';
 
 :host {
+  min-height: 0;
+
   .table {
     position: relative;
     height: fit-content;

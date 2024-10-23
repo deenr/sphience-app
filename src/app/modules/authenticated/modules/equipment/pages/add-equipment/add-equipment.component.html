@@ -1,0 +1,111 @@
+<ng-template #buttons>
+  <button mat-stroked-button>Cancel</button>
+  <button mat-flat-button color="primary">Save</button>
+</ng-template>
+
+<app-header title="Create device">
+  <ng-container actions [ngTemplateOutlet]="buttons"></ng-container>
+  <ng-container tabs>
+    <app-tabs [tabs]="tabs" [(activeTab)]="activeTab"></app-tabs>
+  </ng-container>
+</app-header>
+
+<main class="add-equipment flex-column full-height">
+  <header class="add-equipment__header">
+    <h2 class="text-lg text-semibold">Device info</h2>
+    <p class="text-sm text-regular">Update your photo and device information here.</p>
+    <mat-divider class="header__divider"></mat-divider>
+  </header>
+  <section class="add-equipment__form flex-column">
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Name</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Name</mat-label>
+        <input matInput placeholder="Enter title" />
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-row form__input">
+      <p class="text-sm text-semibold">Short description</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Short description</mat-label>
+        <textarea class="short-description" matInput placeholder="Enter a short description of the device"></textarea>
+        <mat-hint>10 characters left</mat-hint>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-row form__input">
+      <p class="text-sm text-semibold">Detailed description</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Detailed description</mat-label>
+        <textarea class="detailed-description" matInput placeholder="Enter a detailed description of the device"></textarea>
+        <mat-hint>275 characters left</mat-hint>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Area of interest</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Area of interest</mat-label>
+        <mat-select placeholder="Select the area of interest" />
+      </mat-form-field>
+    </div>
+  </section>
+  <header class="add-equipment__header">
+    <h2 class="text-lg text-semibold">Device location</h2>
+    <p class="text-sm text-regular">Update the device location information here.</p>
+    <mat-divider class="header__divider"></mat-divider>
+  </header>
+  <section class="add-equipment__form flex-column">
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Location</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Street</mat-label>
+        <input matInput placeholder="Shortly describe the location" />
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Street</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Street</mat-label>
+        <input matInput placeholder="Enter the street name with number" />
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Postcode and city</p>
+      <div class="postcode-and-city flex-row">
+        <mat-form-field>
+          <mat-label class="text-sm text-medium">Postcode</mat-label>
+          <input matInput placeholder="Enter postcode" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label class="text-sm text-medium">City</mat-label>
+          <input matInput placeholder="Enter city" />
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="form__input flex-row">
+      <p class="text-sm text-semibold">Country</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Country</mat-label>
+        <mat-select placeholder="Select the country" />
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-row form__input">
+      <p class="text-sm text-semibold">Extra information</p>
+      <mat-form-field>
+        <mat-label class="text-sm text-medium">Extra information</mat-label>
+        <textarea class="detailed-description" matInput placeholder="Any extra information that is needed to describe the location can be put here."></textarea>
+        <mat-hint>275 characters left</mat-hint>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+  <footer class="add-equipment__footer flex-row">
+    <ng-container [ngTemplateOutlet]="buttons"></ng-container>
+  </footer>
+</main>

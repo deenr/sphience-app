@@ -1,0 +1,96 @@
+@use 'sphience';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll !important;
+
+  .add-equipment {
+    margin-top: 32px;
+    padding: 0 16px;
+    gap: 24px;
+
+    @include sphience.breakpoint-md {
+      min-height: 0;
+      padding: 0 32px;
+    }
+
+    &__header {
+      p {
+        margin-top: 4px;
+        color: sphience.$color-grey-600;
+      }
+
+      .header__divider {
+        margin-top: 20px;
+      }
+    }
+
+    &__form {
+      gap: 20px;
+
+      .form__input {
+        gap: 32px;
+
+        &::after {
+          @include sphience.breakpoint-lg {
+            flex: 1;
+            content: '';
+          }
+        }
+
+        p {
+          flex: 1;
+          display: none;
+
+          @include sphience.breakpoint-md() {
+            display: block;
+          }
+        }
+
+        .postcode-and-city,
+        mat-form-field {
+          flex: 2;
+        }
+
+        .postcode-and-city {
+          gap: 24px;
+
+          mat-form-field:first-child {
+            flex: 1;
+          }
+
+          mat-form-field:last-child {
+            flex: 2;
+          }
+        }
+
+        ::ng-deep .mdc-notched-outline {
+          display: block;
+
+          @include sphience.breakpoint-md() {
+            display: none !important;
+          }
+        }
+
+        .short-description {
+          resize: none;
+          min-height: 68px;
+        }
+
+        .detailed-description {
+          resize: none;
+          min-height: 180px;
+        }
+      }
+    }
+
+    &__footer {
+      gap: 12px;
+
+      @include sphience.breakpoint-md {
+        justify-content: end;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 @let primary = primaryButton();
 @if (showPrimaryInline()) {
-  <button #primaryBtn mat-flat-button color="primary">
+  <button #primaryBtn mat-flat-button color="primary" (click)="primary?.action()">
     @if (primary.icon) {
       <mat-icon [svgIcon]="primary.icon"></mat-icon>
     }
@@ -11,7 +11,7 @@
 @let secondary = secondaryButton();
 <!-- only show if these is space otherwise put the secondary button together with the extra buttons-->
 @if (secondary && showSecondaryInline()) {
-  <button #secondaryBtn mat-stroked-button>
+  <button #secondaryBtn mat-stroked-button (click)="secondary?.action()">
     @if (secondary.icon) {
       <mat-icon [svgIcon]="secondary.icon"></mat-icon>
     }
@@ -24,7 +24,7 @@
   <button mat-stroked-button class="icon-only" [matMenuTriggerFor]="extraOptions"><mat-icon svgIcon="dots-vertical"></mat-icon></button>
   <mat-menu #extraOptions="matMenu" class="extra-actions">
     @for (extraButton of extra; track $index) {
-      <button mat-menu-item>
+      <button mat-menu-item (click)="extraButton?.action()">
         @if (extraButton.icon) {
           <mat-icon [svgIcon]="extraButton.icon"></mat-icon>
         }

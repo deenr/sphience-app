@@ -6,12 +6,8 @@
     <app-tabs [tabs]="tabs" [(activeTab)]="activeTab"></app-tabs>
   </ng-container>
 </app-header>
-<mat-menu #extraOptions="matMenu" class="extra-actions">
-  <button mat-menu-item><mat-icon svgIcon="plus"></mat-icon>Add device</button>
-  <button mat-menu-item><mat-icon svgIcon="trash"></mat-icon>Remove selected device(s)</button>
-</mat-menu>
 
-<div class="equipment flex-column full-height">
+<main class="equipment flex-column full-height">
   <app-filter [formGroup]="filterForm">
     <mat-form-field main class="filter__input--left filter__input--search full-width">
       <mat-icon matIconPrefix svgIcon="search"></mat-icon>
@@ -26,8 +22,8 @@
     </ng-container>
   </app-filter>
   @if ($equipmentView() === 'list') {
-    <app-table class="full-height" [data]="data" [columns]="columns" title="All devices"></app-table>
+    <app-table class="full-height" [data]="data" [columns]="columns"></app-table>
   } @else {
     <app-equipment-grid class="full-height min-height-0" [data]="data"></app-equipment-grid>
   }
-</div>
+</main>

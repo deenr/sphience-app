@@ -1,6 +1,6 @@
 @let dateRange = $dateRange();
 @if (isDesktop$ | async) {
-  <button class="datepicker" mat-stroked-button [class.active]="$hasValidDateRange()" #datepickerTrigger="matMenuTrigger" [matMenuTriggerFor]="datepicker">
+  <button class="datepicker" mat-stroked-button [class.active]="$hasValidDateRange()" #datepickerTrigger="matMenuTrigger" [matMenuTriggerFor]="datepicker" (click)="$event.stopPropagation()">
     <mat-icon svgIcon="calendar"></mat-icon><span class="text-sm text-semibold">{{ $buttonText() }}</span>
   </button>
   <mat-menu #datepicker="matMenu" [overlapTrigger]="true">

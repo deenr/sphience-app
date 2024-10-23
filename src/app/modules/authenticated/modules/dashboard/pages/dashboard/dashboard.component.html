@@ -3,7 +3,7 @@
     <app-action-buttons [primaryButton]="primaryActionButton" [secondaryButton]="secondaryActionButton"></app-action-buttons>
   </ng-container>
 </app-header>
-<div class="dashboard flex-column">
+<main class="dashboard flex-column">
   <section class="dashboard__quick-actions">
     <app-quick-action icon="document" text="My documents"></app-quick-action>
     <app-quick-action icon="heart" text="View favourite devices" (click)="navigateToFavouriteDevices()"></app-quick-action>
@@ -26,4 +26,4 @@
       <app-device-card class="full-width" [data]="unavailableMicroscope"></app-device-card> -->
     </div>
   </section>
-</div>
+</main>
