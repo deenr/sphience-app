@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
-import { UserRole } from '@core/models/user';
+import { UserRole } from '@core/models';
 import { TranslateModule } from '@ngx-translate/core';
 import { DividerWithTextComponent } from '@shared/components/divider-with-text/divider-with-text.component';
 import { ProgressStep } from '@shared/components/progress-steps/progress-step.interface';

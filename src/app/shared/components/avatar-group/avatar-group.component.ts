@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { EquipmentDocument } from '@core/models/types/equipment.interface';
+import { EquipmentDocument } from '@core/models';
 import { AvatarComponent, AvatarSize } from '../avatar/avatar.component';
 
 export enum AvatarGroupSize {

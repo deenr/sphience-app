@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, input, signal, WritableSignal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Equipment } from '@core/models/types/equipment.interface';
+import { EquipmentDocument } from '@core/models';
 import { AvatarGroupComponent, AvatarGroupSize } from '../avatar-group/avatar-group.component';
 import { BadgeComponent, BadgeSize, Color } from '../badge/badge.component';
 
@@ -15,7 +15,13 @@ export type DeviceCardView = 'availability' | 'documents';
   imports: [MatIconModule, BadgeComponent, DatePipe, AvatarGroupComponent]
 })
 export class DeviceCardComponent {
-  public data = input.required<Equipment>();
+  public data = input.required<{
+    image: string;
+    title: string;
+    available: boolean;
+    availableDate: Date;
+    documents: EquipmentDocument[];
+  }>();
 
   public Color = Color;
   public BadgeSize = BadgeSize;

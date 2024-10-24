@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { EquipmentDocument } from '@core/models/types/equipment.interface';
+import { EquipmentDocument } from '@core/models';
 
 export enum AvatarSize {
   XS = 'XS',
