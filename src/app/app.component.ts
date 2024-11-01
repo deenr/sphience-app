@@ -21,8 +21,6 @@ import { SVG_ICONS as svgIcons } from './svg-icons.generated';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'sphience-app';
-
   public constructor(
     private readonly iconRegistry: MatIconRegistry,
     private readonly domSanitizer: DomSanitizer,

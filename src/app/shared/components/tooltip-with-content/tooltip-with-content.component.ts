@@ -20,15 +20,15 @@ export class TooltipWithContentComponent implements OnDestroy {
   }
 
   public openMenu() {
-    if (!this.trigger?.menuOpen) {
-      this.trigger!.openMenu();
+    if (this.trigger && !this.trigger.menuOpen) {
+      this.trigger.openMenu();
     }
     this.cancelCloseTimer();
   }
 
   public startCloseTimer() {
     this.closeMenuTimer = setTimeout(() => {
-      if (this.trigger?.menuOpen) {
+      if (this.trigger && this.trigger.menuOpen) {
         this.trigger.closeMenu();
       }
     }, 250);

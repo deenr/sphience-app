@@ -1,31 +1,80 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RenderResult, fireEvent, render, screen } from '@testing-library/angular';
-import { TabsComponent } from './tabs.component';
+import { By } from '@angular/platform-browser';
 import { TabsItem } from './tabs-item.interface';
+import { TabsComponent } from './tabs.component';
+
+type TabKey = '1' | '2' | '3';
 
 describe('TabsComponent', () => {
-  async function renderComponent(tabs: TabsItem[], activeTab: TabsItem): Promise<RenderResult<TabsComponent, TabsComponent>> {
-    return await render(TabsComponent, {
-      componentProperties: { tabs, activeTab },
-      imports: [MatTabsModule]
+  const tabs: TabsItem<TabKey>[] = [
+    { key: '1', value: 'Option one' },
+    { key: '2', value: 'Option two' },
+    { key: '3', value: 'Option three' }
+  ];
+
+  let fixture: ComponentFixture<TabsComponent<TabKey>>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [TabsComponent, MatTabsModule]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent<TabsComponent<TabKey>>(TabsComponent);
+  });
+
+  it('should initialise the first tab as active when no active tab is defined', async () => {
+    const defaultActiveIndex = 0;
+
+    fixture.componentRef.setInput('tabs', tabs);
+    fixture.detectChanges();
+
+    const tabElements = fixture.debugElement.queryAll(By.css('a'));
+    tabElements.forEach((tab, index) => {
+      const isTabSelected = tab.nativeElement.getAttribute('aria-selected') === 'true';
+      if (index === defaultActiveIndex) {
+        expect(isTabSelected).toBeTrue();
+      } else {
+        expect(isTabSelected).toBeFalse();
+      }
     });
-  }
+  });
 
-  it('should emit the new active tab on click', async () => {
-    const tabs = [
-      { key: '1', value: 'Option one' },
-      { key: '2', value: 'Option two' },
-      { key: '3', value: 'Option three' }
-    ];
+  it('should initialise the correct tab as active when active tab is defined', async () => {
+    const activeIndex = 2;
+    const activeTab = tabs[activeIndex];
 
-    await renderComponent(tabs, null);
+    fixture.componentRef.setInput('tabs', tabs);
+    fixture.componentRef.setInput('activeTab', activeTab);
+    fixture.detectChanges();
 
-    expect(screen.getByText(tabs[0].value).parentElement.parentElement.classList.contains('mdc-tab--active')).toBe(true);
-    expect(screen.getByText(tabs[1].value).parentElement.parentElement.classList.contains('mdc-tab--active')).toBe(false);
+    fixture.debugElement.queryAll(By.css('a')).forEach((tab, index) => {
+      const isTabSelected = tab.nativeElement.getAttribute('aria-selected') === 'true';
+      if (index === activeIndex) {
+        expect(isTabSelected).toBeTrue();
+      } else {
+        expect(isTabSelected).toBeFalse();
+      }
+    });
+  });
 
-    fireEvent.click(screen.getByText(tabs[1].value));
+  it('should set tab as active on click', async () => {
+    const newActiveIndex = 1;
 
-    expect(screen.getByText(tabs[0].value).parentElement.parentElement.classList.contains('mdc-tab--active')).toBe(false);
-    expect(screen.getByText(tabs[1].value).parentElement.parentElement.classList.contains('mdc-tab--active')).toBe(true);
+    fixture.componentRef.setInput('tabs', tabs);
+    fixture.detectChanges();
+
+    const tabElements = fixture.debugElement.nativeElement.querySelectorAll('a');
+    tabElements[newActiveIndex].click();
+    fixture.detectChanges();
+
+    fixture.debugElement.queryAll(By.css('a')).forEach((tab, index) => {
+      const isTabSelected = tab.nativeElement.getAttribute('aria-selected') === 'true';
+      if (index === newActiveIndex) {
+        expect(isTabSelected).toBeTrue();
+      } else {
+        expect(isTabSelected).toBeFalse();
+      }
+    });
   });
 });

@@ -1,7 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProgressStep } from './progress-step.interface';
+
+export interface ProgressStep {
+  stepName: string;
+  svgIcon: string;
+  title: string;
+  description: string;
+}
 
 @Component({
   standalone: true,

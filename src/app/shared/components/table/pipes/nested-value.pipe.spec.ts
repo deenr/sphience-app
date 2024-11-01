@@ -1,5 +1,4 @@
-import { TableColumn } from '../builder/table-column';
-import { TableColumnDataType } from '../table-column-data-type.enum';
+import { TableColumn, TableColumnDataType } from '../builder/table-column-builder';
 import { NestedValuePipe } from './nested-value.pipe';
 
 describe('NestedValuePipe', () => {

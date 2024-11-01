@@ -1,10 +1,23 @@
 import { TestBed } from '@angular/core/testing';
+import { MatIconRegistry } from '@angular/material/icon';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [AppComponent, TranslateModule.forRoot()],
+      providers: [
+        MatIconRegistry,
+        provideAnimations(),
+        {
+          provide: TranslateService,
+          useValue: {
+            use: jasmine.createSpy('use')
+          }
+        }
+      ]
     }).compileComponents();
   });
 
@@ -12,18 +25,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'sphience-app' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('sphience-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, sphience-app');
   });
 });

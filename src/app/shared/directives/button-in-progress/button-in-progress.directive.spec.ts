@@ -1,52 +1,45 @@
-import { Component, Input } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { render, screen } from '@testing-library/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonInProgressDirective } from './button-in-progress.directive';
 
 @Component({
-  template: '<button mat-flat-button [inProgress]="inProgress">Button</button>'
+  standalone: true,
+  imports: [ButtonInProgressDirective, MatButtonModule],
+  template: `<button mat-flat-button [inProgress]="$inProgress()" (click)="toggleSpinner()">Submit</button>`
 })
-class ButtonTestComponent {
-  @Input() public inProgress = false;
+class ButtonInProgressTestComponent {
+  public $inProgress = signal(false);
+
+  public toggleSpinner(): void {
+    this.$inProgress.update((value) => !value);
+  }
 }
 
 describe('ButtonInProgressDirective', () => {
-  it('should show the spinner when inProgress is set to true', async () => {
-    await render(ButtonTestComponent, {
-      imports: [MatProgressSpinnerModule, MatButtonModule, ButtonInProgressDirective],
-      declarations: [ButtonTestComponent],
-      componentProperties: { inProgress: true }
-    });
-
-    expect(screen.getByTestId('spinner')).toBeInTheDocument();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ButtonInProgressTestComponent, BrowserAnimationsModule]
+    }).compileComponents();
   });
 
-  it('should not show the spinner when inProgress is set to false', async () => {
-    await render(ButtonTestComponent, {
-      imports: [MatProgressSpinnerModule, MatButtonModule, ButtonInProgressDirective],
-      declarations: [ButtonTestComponent],
-      componentProperties: { inProgress: false }
-    });
+  it('should toggle spinner if button is clicked', async () => {
+    const fixture = TestBed.createComponent(ButtonInProgressTestComponent);
+    const button = fixture.debugElement.nativeElement.querySelector('button');
 
-    expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
-  });
+    const getSpinner = () => fixture.debugElement.nativeElement.getElementsByTagName('mat-progress-spinner');
 
-  it('should be able to toggle the spinner on run time', async () => {
-    const { fixture } = await render(ButtonTestComponent, {
-      imports: [MatProgressSpinnerModule, MatButtonModule, ButtonInProgressDirective],
-      declarations: [ButtonTestComponent],
-      componentProperties: { inProgress: false }
-    });
+    expect(getSpinner().length).toBe(0);
 
-    const component = fixture.componentInstance;
+    button.click();
+    fixture.detectChanges();
 
-    expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
+    expect(getSpinner().length).toBe(1);
 
-    component.inProgress = !component.inProgress;
-    expect(screen.getByTestId('spinner')).toBeInTheDocument();
+    button.click();
+    fixture.detectChanges();
 
-    component.inProgress = !component.inProgress;
-    expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
+    expect(getSpinner().length).toBe(0);
   });
 });

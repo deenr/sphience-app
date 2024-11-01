@@ -60,12 +60,12 @@ export class ActionButtonsComponent implements AfterViewInit {
   public constructor() {}
 
   public ngAfterViewInit(): void {
-    const primaryWidth = (this.primaryBtnRef._elementRef.nativeElement as HTMLButtonElement)?.offsetWidth;
+    const primaryWidth = (this.primaryBtnRef?._elementRef?.nativeElement as HTMLButtonElement)?.offsetWidth;
     if (primaryWidth) {
       this.primaryButtonWidth = primaryWidth;
     }
 
-    const secondaryWidth = (this.secondaryBtnRef._elementRef.nativeElement as HTMLButtonElement)?.offsetWidth;
+    const secondaryWidth = (this.secondaryBtnRef?._elementRef?.nativeElement as HTMLButtonElement)?.offsetWidth;
     if (secondaryWidth) {
       this.secondaryButtonWidth = secondaryWidth;
     }
@@ -80,7 +80,7 @@ export class ActionButtonsComponent implements AfterViewInit {
 
   private checkAvailableSpace() {
     setTimeout(() => {
-      const containerElement = document.getElementsByTagName('app-action-buttons')[0].parentElement as HTMLDivElement;
+      const containerElement = document.getElementsByTagName('app-action-buttons')[0]?.parentElement as HTMLDivElement;
       if (!containerElement) return;
       const containerWidth = containerElement.offsetWidth;
 

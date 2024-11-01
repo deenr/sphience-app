@@ -1,6 +1,6 @@
 <div class="avatar-group flex-row">
   @for (document of $visibleDocuments(); track $index) {
-    <div class="avatar">
+    <div class="avatar-item">
       <app-avatar [size]="avatarSize" [document]="document"></app-avatar>
     </div>
   }
