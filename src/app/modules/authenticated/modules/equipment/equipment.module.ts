@@ -17,6 +17,7 @@ import { FilterComponent } from '@shared/components/filter/filter.component';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { TableModule } from '@shared/components/table/table.module';
 import { TabsComponent } from '@shared/components/tabs/tabs.component';
+import { ButtonInProgressDirective } from '@shared/directives/button-in-progress/button-in-progress.directive';
 import { EquipmentGridComponent } from './components/equipment-grid/equipment-grid.component';
 import { EquipmentRoutingModule } from './equipment.routing';
 import { AddEquipmentComponent } from './pages/add-equipment/add-equipment.component';
@@ -44,7 +45,8 @@ import { EquipmentComponent } from './pages/equipment/equipment.component';
     DatepickerModule,
     FilterComponent,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    ButtonInProgressDirective
   ]
 })
 export class EquipmentModule {}

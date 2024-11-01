@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { EquipmentDocument } from '@core/models';
+import { DeviceDocument } from '@core/models';
 import { AvatarComponent, AvatarSize } from '../avatar/avatar.component';
 
 export enum AvatarGroupSize {
@@ -17,7 +17,7 @@ export enum AvatarGroupSize {
 })
 export class AvatarGroupComponent {
   public size = input<AvatarGroupSize>(AvatarGroupSize.MD);
-  public documents = input.required<EquipmentDocument[]>();
+  public documents = input.required<DeviceDocument[]>();
   public maxItems = input<number>(Infinity);
 
   public get avatarSize(): AvatarSize {

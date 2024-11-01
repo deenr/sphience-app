@@ -42,7 +42,7 @@
             }
             @case (tableColumnDataType.AVATAR_GROUP) {
               @let documents = row | nestedValue: column;
-              @if (documents.length > 0) {
+              @if (documents && documents.length > 0) {
                 <p class="document-count">{{ documents.length }} documents</p>
                 <app-avatar-group [documents]="documents" [size]="AvatarGroupSize.XS" [maxItems]="6"></app-avatar-group>
               }

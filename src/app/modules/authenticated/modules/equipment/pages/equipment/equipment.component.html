@@ -22,8 +22,8 @@
     </ng-container>
   </app-filter>
   @if ($equipmentView() === 'list') {
-    <app-table class="full-height" [data]="data" [columns]="columns"></app-table>
+    <app-table class="full-height" [data]="(data$ | async) ?? []" [columns]="columns"></app-table>
   } @else {
-    <app-equipment-grid class="full-height min-height-0" [data]="data"></app-equipment-grid>
+    <app-equipment-grid class="full-height min-height-0" [data]="(data$ | async) ?? []"></app-equipment-grid>
   }
 </main>
