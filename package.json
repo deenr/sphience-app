@@ -8,6 +8,7 @@
     "prebuild": "node prebuild/generate-svg-icons.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "pretest": "node prebuild/generate-svg-icons.js",
     "test": "ng test"
   },
   "private": true,
