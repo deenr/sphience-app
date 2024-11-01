@@ -32,7 +32,8 @@ import { TableComponent } from './table.component';
     BadgeComponent,
     AvatarGroupComponent,
     MatTooltipModule,
-    TooltipWithContentComponent
+    TooltipWithContentComponent,
+    MatIconModule
   ],
   declarations: [TableComponent, NestedValuePipe, TableOverlayComponent, TableImageComponent],
   exports: [TableComponent]

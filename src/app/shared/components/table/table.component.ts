@@ -33,11 +33,12 @@ export class TableComponent<T> {
 
   public AvatarGroupSize = AvatarGroupSize;
 
-  public displayedColumns = computed(() => this.columns().map((column: TableColumn) => column.field));
-  public dataSource: Signal<MatTableDataSource<T>> = computed(() => {
+  public $displayedColumns = computed(() => this.columns().map((column: TableColumn) => column.field));
+  public $dataSource: Signal<MatTableDataSource<T>> = computed(() => {
     const dataSource = new MatTableDataSource(this.data());
-    if (this.paginator) dataSource.paginator = this.paginator;
-
+    if (this.paginator) {
+      dataSource.paginator = this.paginator;
+    }
     return dataSource;
   });
   public selectionModel = new SelectionModel<T>(true, []);
@@ -47,12 +48,12 @@ export class TableComponent<T> {
 
   public isAllSelected(): boolean {
     const numSelected = this.selectionModel.selected.length;
-    const numRows = this.dataSource().data.length;
+    const numRows = this.$dataSource().data.length;
     return numSelected === numRows;
   }
 
   public selectAll(): void {
-    this.isAllSelected() ? this.selectionModel.clear() : this.dataSource().data.forEach((row) => this.selectionModel.select(row));
+    this.isAllSelected() ? this.selectionModel.clear() : this.$dataSource().data.forEach((row) => this.selectionModel.select(row));
   }
 
   public onCellEdit(event: MouseEvent, object: T): void {

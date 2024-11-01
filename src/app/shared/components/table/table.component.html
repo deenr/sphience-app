@@ -2,14 +2,13 @@
   @if (title()) {
     <h3>{{ title() }}</h3>
   }
-  <mat-table class="full-height shadow-xs" [dataSource]="dataSource()" matSort>
+  <mat-table class="full-height shadow-xs" [dataSource]="$dataSource()" matSort>
     @for (column of columns(); track column; let index = $index) {
       <ng-container [matColumnDef]="column.field">
         {{ column.field }}
         <mat-header-cell *matHeaderCellDef [class.mat-cell-action]="isActionColumn(column)">
           @if (withSelection() && index === 0) {
             <mat-checkbox
-              data-testid="mat-mdc-checkbox"
               (change)="$event ? selectAll() : null"
               [checked]="selectionModel.hasValue() && isAllSelected()"
               [indeterminate]="selectionModel.hasValue() && !isAllSelected()"
@@ -21,8 +20,7 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let row" [class.mat-cell-action]="isActionColumn(column)">
           @if (withSelection() && index === 0) {
-            <mat-checkbox data-testid="mat-mdc-checkbox" (click)="$event.stopPropagation()" (change)="$event ? selectionModel.toggle(row) : null" [checked]="selectionModel.isSelected(row)">
-            </mat-checkbox>
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectionModel.toggle(row) : null" [checked]="selectionModel.isSelected(row)"> </mat-checkbox>
           }
           @switch (column.type) {
             @case (tableColumnDataType.TEXT) {
@@ -52,21 +50,21 @@
               <app-table-image [imageSrc]="imageSrc"></app-table-image>
             }
             @case (tableColumnDataType.EDIT) {
-              <mat-icon data-testid="table-edit-icon" class="action-icon" svgIcon="pencil" (click)="onCellEdit($event, row)"></mat-icon>
+              <mat-icon class="action-icon" svgIcon="pencil" (click)="onCellEdit($event, row)"></mat-icon>
             }
             @case (tableColumnDataType.DELETE) {
-              <mat-icon data-testid="table-delete-icon" class="action-icon" svgIcon="trash" (click)="onCellDelete($event, row)"></mat-icon>
+              <mat-icon class="action-icon" svgIcon="trash" (click)="onCellDelete($event, row)"></mat-icon>
             }
           }
         </mat-cell>
       </ng-container>
     }
 
-    <mat-header-row *matHeaderRowDef="displayedColumns()"></mat-header-row>
-    <mat-row data-testid="table-row" *matRowDef="let row; columns: displayedColumns()" [class.clickable]="isCellClickedObserved()" (click)="onRowClick(row)"> </mat-row>
+    <mat-header-row *matHeaderRowDef="$displayedColumns()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: $displayedColumns()" [class.clickable]="isCellClickedObserved()" (click)="onRowClick(row)"> </mat-row>
     @if (withNoResultsOverlay()) {
       <app-table-overlay *matNoDataRow></app-table-overlay>
     }
   </mat-table>
-  <mat-paginator [class.display-none]="!withPaginator" data-testid="paginator" [pageSizeOptions]="[10]"></mat-paginator>
+  <mat-paginator [class.display-none]="!withPaginator" [pageSizeOptions]="[10]"></mat-paginator>
 </div>
