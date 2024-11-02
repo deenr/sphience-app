@@ -1,27 +1,122 @@
-# SphienceApp
+# Sphience Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+### Transforming Research Equipment Access for Academia
 
-## Development server
+![Version](https://img.shields.io/github/package-json/v/deenr/sphience-app)
+![Build Status](https://img.shields.io/github/actions/workflow/status/deenr/sphience-app/ci.yml?branch=main)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🚀 About Sphience
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In the academic world, access to research equipment can be a significant barrier to discovery. **Sphience** is on a mission to empower students, PhDs, and professors with streamlined access to essential research resources. Our platform enables seamless collaboration and resource-sharing, transforming the way researchers work together in academia.
 
-## Build
+**This repository contains the frontend application for Sphience**, built with Angular and designed to provide a responsive, user-friendly interface for academic research and resource sharing.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Why Sphience?**
 
-## Running unit tests
+- **🤝 Facilitated Collaboration**: Connect students and researchers across universities to access equipment and collaborate on projects.
+- **🔧 Simplified Resource Management**: Track and manage equipment with ease, improving research workflows.
+- **🎓 Focused on Academia**: Designed specifically for academic environments to enhance the research process.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🖥️ Demo
 
-## Running end-to-end tests
+[Live Demo and screenshots coming soon]
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🛠️ Built With
 
-## Further help
+- [Angular](https://angular.io) – A powerful framework for building dynamic web applications
+- [SCSS](https://sass-lang.com/) – CSS with enhanced features for modular styling
+- [Angular Material](https://material.angular.io) – UI components for a consistent design
+- [ngx-translate](https://github.com/ngx-translate/core) – For multilingual support
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🚦 Getting Started
+
+### Prerequisites
+
+- **Angular CLI**: Install Angular CLI globally if you haven't already.
+
+```bash
+npm install -g @angular/cli
+```
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/deenr/sphience-app.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd sphience-app
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Run the application:**
+   ```bash
+   npm start
+   ```
+
+The app will be accessible at `http://localhost:4200`. 🎉 You’re all set to explore Sphience!
+
+## 💻 Development
+
+### Available Scripts
+
+- `npm run start` - Start the development server
+- `npm run build` - Build the app for production
+- `npm run test`  - Run unit tests
+
+### Project Structure
+
+```plaintext
+sphience-app/
+├── src/
+│   ├── app/             
+│   │   ├── core/         # Core services and application-wide settings
+│   │   ├── modules/      # Modular components and UI elements
+│   │   ├── features/     # Feature-specific components
+│   ├── assets/           # Static assets like images and icons
+│   ├── environments/     # Environment configuration files
+│   ├── theme/            # Custom theme and style configurations
+```
+
+## 📅 Project Status
+
+> **Status**: 🚧 Ongoing Development
+
+Sphience is actively being developed. Contributions and feedback are very welcome as we work to build and refine this platform.
+
+## 🤝 Contributing
+
+Contributions make this open-source project even better! Here’s how you can help:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/new-feature`)
+3. **Commit your changes** (`git commit -m 'feat: new feature'`)
+4. **Push the branch** (`git push origin feature/new-feature`)
+5. **Open a Pull Request**
+
+Your contributions, big or small, help make Sphience a better tool for academia.
+
+## 📫 Contact
+
+- **X**: [@deanreymen](https://x.com/deanreymen)
+- **LinkedIn**: [/in/dean-reymen](https://linkedin.com/in/dean-reymen)
+
+## 🙏 Acknowledgments
+
+Built with gratitude for:
+
+- [Angular](https://angular.io) - The framework that brings our vision to life
+- [SCSS](https://sass-lang.com/) - For powerful, modular styling
+- [Angular Material](https://material.angular.io) - For a sleek and consistent UI
+- The open-source community, for inspiration and support
+
+--- 
+
+Let’s build a better future for research and academia, one innovation at a time! 🌍📚
+
+
