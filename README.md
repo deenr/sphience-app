@@ -19,26 +19,24 @@ In the academic world, access to research equipment can be a significant barrier
 - **🔧 Simplified Resource Management**: Track and manage equipment with ease, improving research workflows.
 - **🎓 Focused on Academia**: Designed specifically for academic environments to enhance the research process.
 
-## 🖥️ Demo
-
-[Live Demo and screenshots coming soon]
-
 ## 🛠️ Built With
 
-- [Angular](https://angular.io) – A powerful framework for building dynamic web applications
-- [SCSS](https://sass-lang.com/) – CSS with enhanced features for modular styling
+- [Angular](https://angular.io) (v18.2.4) – A powerful framework for building dynamic web applications
 - [Angular Material](https://material.angular.io) – UI components for a consistent design
+- [SCSS](https://sass-lang.com/) – CSS with enhanced features for modular styling
 - [ngx-translate](https://github.com/ngx-translate/core) – For multilingual support
+- [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) - For toast notifications
+- [JWT Decode](https://www.npmjs.com/package/jwt-decode) - For JWT token handling
 
 ## 🚦 Getting Started
 
 ### Prerequisites
 
-- **Angular CLI**: Install Angular CLI globally if you haven't already.
-
-```bash
-npm install -g @angular/cli
-```
+- **Node.js**: v18.x or higher
+- **Angular CLI**: Install Angular CLI globally
+  ```bash
+  npm install -g @angular/cli
+  ```
 
 ### Installation
 
@@ -59,39 +57,40 @@ npm install -g @angular/cli
    npm start
    ```
 
-The app will be accessible at `http://localhost:4200`. 🎉 You’re all set to explore Sphience!
+The app will be accessible at `http://localhost:4200`. 🎉
 
 ## 💻 Development
 
 ### Available Scripts
 
-- `npm run start` - Start the development server
-- `npm run build` - Build the app for production
-- `npm run test`  - Run unit tests
+- `npm start` - Start the development server (runs generate-svg-icons script first)
+- `npm run build` - Build the app for production (runs generate-svg-icons script first)
+- `npm run test` - Run unit tests with Karma
+- `npm run watch` - Build and watch for changes
 
 ### Project Structure
 
 ```plaintext
 sphience-app/
 ├── src/
-│   ├── app/             
-│   │   ├── core/         # Core services and application-wide settings
-│   │   ├── modules/      # Modular components and UI elements
-│   │   ├── features/     # Feature-specific components
-│   ├── assets/           # Static assets like images and icons
-│   ├── environments/     # Environment configuration files
-│   ├── theme/            # Custom theme and style configurations
+│   ├── app/
+│   │   ├── core/         # Core services, guards, and app-wide components
+│   │   ├── modules/      # Feature modules (authenticated, equipment, etc.)
+│   │   ├── shared/       # Shared components, directives, and pipes
+│   ├── assets/          # Static assets and i18n translations
+│   ├── environments/    # Environment configuration files
+│   ├── theme/          # SCSS themes, variables, and mixins
 ```
 
 ## 📅 Project Status
 
 > **Status**: 🚧 Ongoing Development
 
-Sphience is actively being developed. Contributions and feedback are very welcome as we work to build and refine this platform.
+Sphience is actively being developed with a focus on creating a robust platform for academic equipment sharing.
 
 ## 🤝 Contributing
 
-Contributions make this open-source project even better! Here’s how you can help:
+Contributions make this open-source project even better! Here's how you can help:
 
 1. **Fork the repository**
 2. **Create a feature branch** (`git checkout -b feature/new-feature`)
@@ -99,7 +98,7 @@ Contributions make this open-source project even better! Here’s how you can he
 4. **Push the branch** (`git push origin feature/new-feature`)
 5. **Open a Pull Request**
 
-Your contributions, big or small, help make Sphience a better tool for academia.
+Please ensure your code follows our style guidelines and includes appropriate tests.
 
 ## 📫 Contact
 
@@ -115,8 +114,6 @@ Built with gratitude for:
 - [Angular Material](https://material.angular.io) - For a sleek and consistent UI
 - The open-source community, for inspiration and support
 
---- 
+---
 
 Let’s build a better future for research and academia, one innovation at a time! 🌍📚
-
-
