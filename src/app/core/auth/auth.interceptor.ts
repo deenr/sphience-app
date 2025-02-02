@@ -1,65 +1,69 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { LocalStorageService } from '@core/services/local-storage.service';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  public isRefreshingToken = false;
+let isRefreshingToken = false;
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly localStorageService: LocalStorageService
-  ) {}
+export const authInterceptorFn: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
+  const authService = inject(AuthService);
+  const localStorageService = inject(LocalStorageService);
 
-  public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.localStorageService.getItem(AuthService.TOKEN_KEY);
+  const token = localStorageService.getItem(AuthService.TOKEN_KEY);
 
-    if (token) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
+  let clonedRequest = req;
+
+  if (token) {
+    clonedRequest = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  return next(clonedRequest).pipe(
+    catchError((error: unknown) => {
+      if (error instanceof HttpErrorResponse) {
+        if (!req.url.includes('login') && !req.url.includes('register') && error.status === 401) {
+          return handle401Error(clonedRequest, next, authService);
         }
-      });
-    }
+      }
+      return throwError(() => error);
+    })
+  );
+};
 
-    return next.handle(request).pipe(
-      catchError((error) => {
-        if (error instanceof HttpErrorResponse && !request.url.includes('login') && !request.url.includes('register') && error.status === 401) {
-          return this.handle401Error(request, next);
-        }
+function handle401Error(req: HttpRequest<unknown>, next: HttpHandlerFn, authService: AuthService): Observable<HttpEvent<unknown>> {
+  if (!isRefreshingToken) {
+    isRefreshingToken = true;
 
-        return throwError(() => error);
+    return authService.refreshToken().pipe(
+      switchMap((newToken: string) => {
+        isRefreshingToken = false;
+
+        const newRequest = req.clone({
+          setHeaders: {
+            Authorization: `Bearer ${newToken}`
+          }
+        });
+
+        return next(newRequest);
+      }),
+      catchError((err) => {
+        isRefreshingToken = false;
+        authService.logout();
+        return throwError(() => err);
       })
     );
   }
 
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-    if (!this.isRefreshingToken) {
-      this.isRefreshingToken = true;
-
-      return this.authService.refreshToken().pipe(
-        switchMap((token: string) => {
-          this.isRefreshingToken = false;
-
-          request = request.clone({
-            setHeaders: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-
-          return next.handle(request);
-        }),
-        catchError((err) => {
-          this.isRefreshingToken = false;
-
-          this.authService.logout();
-          return throwError(() => err);
-        })
-      );
-    } else {
-      return next.handle(request);
-    }
-  }
+  return new Observable((subscriber) => {
+    const intervalId = setInterval(() => {
+      if (!isRefreshingToken) {
+        clearInterval(intervalId);
+        next(req).subscribe(subscriber);
+      }
+    }, 100);
+  });
 }
