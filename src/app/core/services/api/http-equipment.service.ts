@@ -6,8 +6,8 @@ import { BaseHttpService } from './base-http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpDeviceService extends BaseHttpService {
-  private endpoint = 'devices';
+export class HttpEquipmentService extends BaseHttpService {
+  private endpoint = 'equipment';
 
   public getEquipment(page: number = 1, pageSize: number = 10): Observable<EquipmentResponse[]> {
     return this.get<EquipmentResponse[]>(this.endpoint, { page, pageSize });
@@ -18,11 +18,11 @@ export class HttpDeviceService extends BaseHttpService {
   }
 
   public createDevice(device: DeviceCreateRequest): Observable<Device> {
-    return this.post<Device>(this.endpoint, device);
+    return this.post<Device, DeviceCreateRequest>(this.endpoint, device);
   }
 
-  public updateDevice(id: string, movie: Partial<Device>): Observable<Device> {
-    return this.put<Device>(`${this.endpoint}/${id}`, movie);
+  public updateDevice(id: string, device: Partial<Device>): Observable<Device> {
+    return this.patch<Device, Partial<Device>>(`${this.endpoint}/${id}`, device);
   }
 
   public deleteDevice(id: string): Observable<void> {

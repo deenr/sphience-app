@@ -15,17 +15,22 @@ export class BaseHttpService {
     private logger: LoggerService
   ) {}
 
-  protected get<T>(endpoint: string, params?: any): Observable<T> {
+  public getAll<T>(endpoint: string, params?: any): Observable<T[]> {
+    const httpParams = new HttpParams({ fromObject: params });
+    return this.http.get<T[]>(`${this.apiUrl}/${endpoint}`, { params: httpParams });
+  }
+
+  public get<T>(endpoint: string, params?: any): Observable<T> {
     const httpParams = new HttpParams({ fromObject: params });
     return this.http.get<T>(`${this.apiUrl}/${endpoint}`, { params: httpParams });
   }
 
-  protected post<T>(endpoint: string, body: any): Observable<T> {
+  public post<T, D>(endpoint: string, body: D): Observable<T> {
     return this.http.post<T>(`${this.apiUrl}/${endpoint}`, body);
   }
 
-  protected put<T>(endpoint: string, body: any): Observable<T> {
-    return this.http.put<T>(`${this.apiUrl}/${endpoint}`, body);
+  public patch<T, D>(endpoint: string, body: D): Observable<T> {
+    return this.http.patch<T>(`${this.apiUrl}/${endpoint}`, body);
   }
 
   protected delete<T>(endpoint: string): Observable<T> {

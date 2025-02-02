@@ -64,6 +64,10 @@
       border-spacing: 0;
       overflow-x: scroll;
 
+      &:has(app-table-overlay) {
+        overflow-x: hidden;
+      }
+
       .cdk-header-row {
         position: sticky;
         z-index: 999;

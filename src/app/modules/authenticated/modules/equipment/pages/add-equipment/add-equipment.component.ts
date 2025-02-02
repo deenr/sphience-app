@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AreaOfInterest, DeviceCreateRequest } from '@core/models';
-import { HttpDeviceService } from '@core/services/api/http-device.service';
+import { HttpEquipmentService } from '@core/services/api/http-equipment.service';
 import { TabsItem } from '@shared/components/tabs/tabs-item.interface';
 import { createRemainingCharsObservable } from '@shared/utils/remaining-chars.utils';
 import { ToastrService } from 'ngx-toastr';
@@ -49,7 +49,7 @@ export class AddEquipmentComponent {
   private $deviceId = signal<string | null>(null);
 
   constructor(
-    private readonly deviceService: HttpDeviceService,
+    private readonly equipmentService: HttpEquipmentService,
     private readonly toastService: ToastrService,
     private readonly router: Router
   ) {
@@ -58,7 +58,7 @@ export class AddEquipmentComponent {
     if (id) {
       this.$deviceId.set(id);
 
-      this.deviceService
+      this.equipmentService
         .getDeviceById(id)
         .pipe(
           take(1),
@@ -101,8 +101,19 @@ export class AddEquipmentComponent {
 
       this.$savingChanges.set(true);
 
-      (this.$isEditingDevice() ? this.deviceService.updateDevice(this.$deviceId()!, request) : this.deviceService.createDevice(request))
-        .pipe(finalize(() => this.$savingChanges.set(false)))
+      (this.$isEditingDevice() ? this.equipmentService.updateDevice(this.$deviceId()!, request) : this.equipmentService.createDevice(request))
+        .pipe(
+          take(1),
+          finalize(() => {
+            this.toastService.success(
+              this.$isEditingDevice() ? 'The device has been updated and the latest changes are now visible.' : 'The device has been created and is now visible.',
+              this.$isEditingDevice() ? 'Successfully updated device' : 'Successfully created device'
+            );
+
+            this.$savingChanges.set(false);
+            this.router.navigate(['/equipment']);
+          })
+        )
         .subscribe();
     }
   }

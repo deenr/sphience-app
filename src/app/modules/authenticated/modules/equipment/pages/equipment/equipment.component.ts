@@ -1,7 +1,7 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpDeviceService } from '@core/services/api/http-device.service';
+import { HttpEquipmentService } from '@core/services/api/http-equipment.service';
 import { LocalStorageService } from '@core/services/local-storage.service';
 import { BadgeType, Color } from '@shared/components/badge/badge.component';
 import { BadgeBuilder } from '@shared/components/table/builder/badge-builder';
@@ -17,11 +17,11 @@ type EquipmentView = 'grid' | 'list';
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent {
-  public primaryActionButton = { icon: 'plus', text: 'Make new reservation' };
-  public secondaryActionButton = { icon: 'cloud-upload', text: 'Upload document' };
+  public primaryActionButton = { icon: 'plus', text: 'Add device', action: () => this.router.navigate(['/equipment/add']) };
+  public secondaryActionButton = { icon: 'trash', text: 'Remove selected device(s)' };
   public extraActionButtons = [
-    { icon: 'trash', text: 'Remove selected device(s)' },
-    { icon: 'plus', text: 'Add device', action: () => this.router.navigate(['/equipment/add']) }
+    { icon: 'cloud-upload', text: 'Upload document' },
+    { icon: 'plus', text: 'Make new reservation' }
   ];
 
   public tabs: TabsItem<EquipmentTabKey>[] = [
@@ -41,7 +41,7 @@ export class EquipmentComponent {
     })
   });
 
-  public data$ = this.deviceService.getEquipment();
+  public data$ = this.equipmentService.getEquipment();
 
   public columns = [
     new TableColumnBuilder().setField('image').setDataType(TableColumnDataType.IMAGE).build(),
@@ -78,7 +78,7 @@ export class EquipmentComponent {
     private readonly activatedRoute: ActivatedRoute,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly deviceService: HttpDeviceService
+    private readonly equipmentService: HttpEquipmentService
   ) {
     const tabKey = this.activatedRoute.snapshot.queryParams['tab'];
     const tab = this.tabs.find((tab) => tab.key === tabKey);
